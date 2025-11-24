@@ -1,0 +1,1102 @@
+{
+    "299680365479923": {
+        "image_file": "14522AB113ACAABA0157F6077C37EBA7_05_74.jpg",
+        "target_object_id": 57528,
+        "target_category": "spoon",
+        "scene_reasoning": "The image depicts a breakfast setting with an egg in a cup, on a dining table, suggesting a scene of someone preparing to have a meal.",
+        "intentions": [
+            "I\u2019m about to enjoy this boiled egg and need something to help scoop out the insides.",
+            "I want to add sugar to my morning coffee and need a small tool to transfer it from the container.",
+            "It\u2019s time for breakfast, and I need a tool to stir my yogurt to mix it well."
+        ]
+    },
+    "994761651170036": {
+        "image_file": "09308149E3AC4EDDEACB5E5991B80AD2_08_108.jpg",
+        "target_object_id": 28597,
+        "target_category": "plate",
+        "scene_reasoning": "The image shows a kitchen counter with various kitchen items around, suggesting preparation for a meal or snack.",
+        "intentions": [
+            "I need something to carry my sandwich from the counter to the dining table.",
+            "I want to set up a nice presentation for my dinner.",
+            "I need to sort out portions for everyone before serving."
+        ]
+    },
+    "359071419185351": {
+        "image_file": "9B7E2F18F297744A41ABE6069F94AD8F_01_60.jpg",
+        "target_object_id": 417047,
+        "target_category": "heater",
+        "scene_reasoning": "The image shows a bedroom environment, possibly during colder weather, where maintaining a comfortable temperature is important.",
+        "intentions": [
+            "I'm feeling chilly and need to warm up the room to be comfortable.",
+            "I want to make sure the room stays cozy while I read a book in bed.",
+            "I've just come in from outside where it was cold, and I need to warm up quickly."
+        ]
+    },
+    "3155029908086198": {
+        "image_file": "709F89103A26A801E32E5754824C754C_05_109.jpg",
+        "target_object_id": 290396,
+        "target_category": "scarf",
+        "scene_reasoning": "The image shows a cozy living room environment with a dining table and a piano, suggesting someone might be preparing to go outside or finish a practice session.",
+        "intentions": [
+            "It's chilly outside, and I need something to keep warm before stepping out.",
+            "I'm planning to do some errands, and I want to have a stylish addition to my outfit.",
+            "I'm getting ready to meet friends, and I want something to keep me cozy during the walk."
+        ]
+    },
+    "445369343937266": {
+        "image_file": "486F6C2967C1385734B029C34FFA000E_03_6.jpg",
+        "target_object_id": 196863,
+        "target_category": "slow cooker",
+        "scene_reasoning": "The image shows a kitchen countertop with a cooking appliance, suggesting preparations for a meal that requires slow cooking.",
+        "intentions": [
+            "I want to start prepping dinner now so it'll be ready by tonight without me having to monitor it constantly.",
+            "I need to set up a meal that can cook while I attend to other tasks throughout the day.",
+            "I'm looking to simmer a stew while I'm out for the majority of the day, so it's perfectly done when I return."
+        ]
+    },
+    "931173914432791": {
+        "image_file": "0A9CDF7364EBBFDBD4B762BA2C50EAC0_10_1.jpg",
+        "target_object_id": 33123,
+        "target_category": "boot",
+        "scene_reasoning": "The scene shows a hallway or entrance area with various types of footwear against the wall, indicating preparation for stepping outside or into different environments.",
+        "intentions": [
+            "I need sturdy footwear for my hike today.",
+            "It's raining outside, I should wear something that can protect my feet.",
+            "I\u2019m heading to the construction site, so I need something that ensures safety."
+        ]
+    },
+    "1153265085211139": {
+        "image_file": "49CCC8404E37DA049B635758DBE879FE_05_85.jpg",
+        "target_object_id": 199784,
+        "target_category": "headphones",
+        "scene_reasoning": "The image shows a dining room or workspace with a table and a laptop in a quiet, indoor residential setting.",
+        "intentions": [
+            "I want to listen to some music or podcasts while working on my laptop.",
+            "I have a video call scheduled and I need something that will make sure I hear everything clearly.",
+            "I'm in the mood for some peace while I enjoy the view outside the window, so I need something to block out distractions."
+        ]
+    },
+    "899621054045917": {
+        "image_file": "28827D88397519323AD8741CF84FFCFA_03_52.jpg",
+        "target_object_id": 112691,
+        "target_category": "television",
+        "scene_reasoning": "A living room with closed blinds and visible reflection indicates a setup suitable for indoor relaxation or entertainment.",
+        "intentions": [
+            "I'm looking forward to unwinding with a movie this evening.",
+            "I'd love to catch up on the latest episodes of my favorite show right now.",
+            "My team is playing a crucial match today, and I don't want to miss it."
+        ]
+    },
+    "297908372327446": {
+        "image_file": "CBA7C27AACBE087EE7F8152B4041B0CA_08_16.jpg",
+        "target_object_id": 539429,
+        "target_category": "vase",
+        "scene_reasoning": "The image shows a living room setting with a wooden table and a comfortable couch, suggesting a relaxing or casual atmosphere.",
+        "intentions": [
+            "I'm setting up a centerpiece for the coffee table to make the living room feel more inviting.",
+            "I want to add a touch of nature to the room by displaying some fresh flowers.",
+            "I need to organize the table by placing a decorative element that complements the current setup."
+        ]
+    },
+    "622473332176402": {
+        "image_file": "7B342328FA30EDDC22A20735F3F1C511_02_5.jpg",
+        "target_object_id": 319261,
+        "target_category": "strawberry",
+        "scene_reasoning": "The image shows a kitchen counter with packaged food items and a single piece of fruit placed out.",
+        "intentions": [
+            "I am preparing a quick healthy snack to boost my energy.",
+            "I want something fresh and sweet to add to my morning yogurt.",
+            "I'm looking to enhance the taste of my breakfast bowl with some fresh goodies."
+        ]
+    },
+    "477106173945945": {
+        "image_file": "331E4876836DC9D8AFEA17D150B16AE6_03_76.jpg",
+        "target_object_id": 142414,
+        "target_category": "dumbbell",
+        "scene_reasoning": "The image shows a piece of workout equipment, likely in a home gym or training area, which suggests an environment focused on exercise.",
+        "intentions": [
+            "I want to squeeze in a quick workout before starting my day.",
+            "I'm feeling stressed and need an energizing activity to help unwind.",
+            "I need to stay on track with my fitness goals by doing some strength training."
+        ]
+    },
+    "475868883940546": {
+        "image_file": "B7BFCDBA3783818F6FBEE0BE2BCDD44B_08_70.jpg",
+        "target_object_id": 498254,
+        "target_category": "television",
+        "scene_reasoning": "The room appears dark with a large electronic screen mounted on the wall, suggesting it's a living space with the potential for relaxation or entertainment.",
+        "intentions": [
+            "It's been a long day, I need some distraction to unwind before bed.",
+            "I want to catch up on my favorite series before the next episode comes out.",
+            "The room feels too quiet, I could use some background noise while I browse my phone."
+        ]
+    },
+    "479032940522583": {
+        "image_file": "23A12514687578FA71D39D6F922EEF51_02_61.jpg",
+        "target_object_id": 95531,
+        "target_category": "fireplace",
+        "scene_reasoning": "The living room features a cozy area with soft carpeted stairs and a romantic ambiance set by the softly glowing embers.",
+        "intentions": [
+            "I'm feeling a bit chilly, I need to make the room warmer.",
+            "I want to set a relaxing mood for the evening, something soothing while I unwind.",
+            "It's the perfect setting for a quiet evening curled up with a book, and I need to enhance the atmosphere."
+        ]
+    },
+    "621099039254971": {
+        "image_file": "13C7B5770B5053F2FF127ABDE44B6378_01_88.jpg",
+        "target_object_id": 56280,
+        "target_category": "shelf",
+        "scene_reasoning": "The image shows a small wooden platform mounted on a wall near a bed, with books and a decorative item placed on it.",
+        "intentions": [
+            "I need to find a place to organize my books and keep them within easy reach.",
+            "I want to arrange my favorite items in the room for display, making the space feel more personal and organized.",
+            "I'm looking to declutter my room by placing non-essential items out of the way but still accessible when needed."
+        ]
+    },
+    "250920117201115": {
+        "image_file": "978298B15A687BDB41B6F411B75211A1_05_101.jpg",
+        "target_object_id": 406613,
+        "target_category": "drum",
+        "scene_reasoning": "The scene shows a cozy living room area with a couch, suitable for musical practice or relaxation, implying potential musical activity or entertainment.",
+        "intentions": [
+            "I feel like jammin' and need something to bring some rhythm into the mix.",
+            "I want to unwind and express some energy in the comfort of my living room.",
+            "I'm in the mood to create some beats and test out my latest musical ideas."
+        ]
+    },
+    "777785540145877": {
+        "image_file": "7A4DFBACCB1D76AE54D0BAC77EBBD874_04_120.jpg",
+        "target_object_id": 316618,
+        "target_category": "nectarine",
+        "scene_reasoning": "The image shows a nectarine on a wooden table along with a plastic fork, indicating a casual setting where someone might be preparing to have a snack or light meal.",
+        "intentions": [
+            "I'm feeling a bit hungry and need a healthy snack to refuel.",
+            "I want something juicy and refreshing to enjoy on a warm day.",
+            "I'm putting together a quick fruit salad and need a sweet addition."
+        ]
+    },
+    "1978511599000112": {
+        "image_file": "8F4684922AB142B7A7750C48A3265984_06_103.jpg",
+        "target_object_id": 386783,
+        "target_category": "food processor",
+        "scene_reasoning": "In the kitchen, preparing to make a meal using various ingredients visible on the counter.",
+        "intentions": [
+            "I need to quickly prepare a large batch of vegetables for tonight's dinner.",
+            "I'm trying a new recipe that requires finely grinding nuts, and I need help with that.",
+            "I'm prepping ingredients to make a smoothie for my breakfast."
+        ]
+    },
+    "572192714469234": {
+        "image_file": "315D374FF3A3BB36F4802A3E1B3D8CDB_02_73.jpg",
+        "target_object_id": 138775,
+        "target_category": "speaker",
+        "scene_reasoning": "The scene shows a controller and an audio device in a room with outlets and a trash bin visible, suggesting a leisure or gaming setup.",
+        "intentions": [
+            "I want to play some music to make my gaming session more fun.",
+            "I need to create a more lively atmosphere while hanging out with friends.",
+            "I want to listen to my playlist without headphones for a change."
+        ]
+    },
+    "364109948623642": {
+        "image_file": "7179CB33DBAAB11EE4B738B30F183770_03_16.jpg",
+        "target_object_id": 291943,
+        "target_category": "computer mouse",
+        "scene_reasoning": "The image shows a wooden desk with various items scattered on it, including a pen, a highlighter, and a computer accessory, indicating a workspace environment.",
+        "intentions": [
+            "I'm about to have a virtual meeting and need something to navigate my presentations smoothly.",
+            "I want to finish editing my document, and using the touchpad isn't precise enough for detailed work.",
+            "I'm starting to feel discomfort with my trackpad and need something more ergonomic for a long working session."
+        ]
+    },
+    "603232431419230": {
+        "image_file": "40EE810E6CEB7CF509C0B5FD2AEC8E11_10_87.jpg",
+        "target_object_id": 181469,
+        "target_category": "sandal",
+        "scene_reasoning": "The image shows a play area with a children's mat, toys, and various items scattered on the floor, indicating an environment suited for casual indoor or backyard activities.",
+        "intentions": [
+            "I need to quickly slip into something comfortable to take the kids outside to play.",
+            "I can't walk on this cold floor with my bare feet, I need something easy to wear.",
+            "I just want something easy to wear while doing chores around the house."
+        ]
+    },
+    "741752380121044": {
+        "image_file": "6F6725355E85B980B1A1F166F61D4399_04_113.jpg",
+        "target_object_id": 287090,
+        "target_category": "remote control",
+        "scene_reasoning": "The photo shows a remote control on the carpet, indicating a living room setting, likely where a TV or entertainment system is present.",
+        "intentions": [
+            "I want to change the channel without getting up from the couch.",
+            "I'm planning to start watching the new episode that just aired.",
+            "I need to adjust the volume because it's too quiet in here."
+        ]
+    },
+    "1921126271400640": {
+        "image_file": "A7D25B5F2D9FFB922F1EF8F80FF07AFA_02_21.jpg",
+        "target_object_id": 452330,
+        "target_category": "candle",
+        "scene_reasoning": "The image shows a home office workspace with a computer setup, indicating a focus on work or relaxation perhaps after a day\u2019s work.",
+        "intentions": [
+            "I need to add a touch of warmth and coziness while I'm working late at my desk.",
+            "The room feels a bit stuffy; I want something to refresh the atmosphere and my mood.",
+            "I'm planning to unwind with a little relaxation music and want my space to feel more tranquil."
+        ]
+    },
+    "3068977813372162": {
+        "image_file": "091012FECDF7DC0B58121019FC4E8F23_01_17.jpg",
+        "target_object_id": 26097,
+        "target_category": "light switch",
+        "scene_reasoning": "The image depicts a desktop with various electronic items, suggesting an indoor environment where someone might be working or setting up electronic devices.",
+        "intentions": [
+            "I want to start working, so I need to brighten up this area.",
+            "The ambient lighting is too dim for reading papers; I need to illuminate the space better.",
+            "I'm about to join a virtual meeting and need to ensure my workspace is well-lit for a clear video call."
+        ]
+    },
+    "726491885175991": {
+        "image_file": "FD7AF4F0A015C78F2623E06331B9A0EA_03_123.jpg",
+        "target_object_id": 635861,
+        "target_category": "headphones",
+        "scene_reasoning": "The image shows a plaid tablecloth with a pair of personal audio equipment and a remote control on it, suggesting a casual setting possibly in a living room or bedroom.",
+        "intentions": [
+            "I want to immerse myself in some music without disturbing anyone else.",
+            "I need to jump on this virtual meeting and ensure there is no background noise.",
+            "I'm about to start a gaming session and want the full sound experience."
+        ]
+    },
+    "361929942189177": {
+        "image_file": "E5332EE773F7F876E70CC414DEE8436E_08_97.jpg",
+        "target_object_id": 582101,
+        "target_category": "remote control",
+        "scene_reasoning": "The kitchen counter shows some electronic and playful items, suggesting this might be a central spot for multitasking or relaxing with entertainment.",
+        "intentions": [
+            "I want to switch to a different channel while I wait for my food to cook.",
+            "I need to turn up the volume on the TV to hear it better over the kitchen noises.",
+            "I'm ready to unwind with my favorite show while I'm taking a break from chores."
+        ]
+    },
+    "699426878095281": {
+        "image_file": "3E26D07CC502D14F5BE3ED4A7763C520_04_81.jpg",
+        "target_object_id": 174598,
+        "target_category": "xbox",
+        "scene_reasoning": "The scene shows a tiled floor in what appears to be an indoor space, suggesting a floor placement in a presumably living area.",
+        "intentions": [
+            "My friends are coming over for a game night, I need to set up for multiplayer.",
+            "The new release is out today, and I'm excited to dive into it for some leisure time.",
+            "I need to wind down after a long day with some virtual adventure."
+        ]
+    },
+    "348150103987306": {
+        "image_file": "62BF4D298BB45A96CEE8C1592386A4A3_09_83.jpg",
+        "target_object_id": 262875,
+        "target_category": "handbag",
+        "scene_reasoning": "The scene shows a bed with various items spread out, suggesting someone might be preparing to leave or organizing their belongings.",
+        "intentions": [
+            "I need to pack everything I might need for the day before heading out.",
+            "I'm getting ready to leave the house, so I need a convenient way to carry my essentials.",
+            "All my important items need a secure place for the commute, especially since I'm going to be out for a while."
+        ]
+    },
+    "446618253818393": {
+        "image_file": "BA61683F54526DF7113C649E57B5A0BE_09_77.jpg",
+        "target_object_id": 501393,
+        "target_category": "mirror",
+        "scene_reasoning": "The image shows a toy car, a puzzle featuring a map of Europe, and a reflective object on a carpeted surface, implying a playful or educational activity environment.",
+        "intentions": [
+            "I'm trying to enhance the educational experience for the children by demonstrating reflection and light in a fun way.",
+            "I want to introduce the kids to a simple science experiment about how light behaves.",
+            "The children are learning about countries and I need to encourage their curiosity with hands-on activities."
+        ]
+    },
+    "357833243011172": {
+        "image_file": "0B33B9D60C67EDD3D227C4F86536A2DD_09_30.jpg",
+        "target_object_id": 34235,
+        "target_category": "high heels",
+        "scene_reasoning": "The scattered items on the floor suggest preparing to go out and choosing the appropriate footwear.",
+        "intentions": [
+            "I need to find the perfect shoes to complement my outfit for the evening event.",
+            "I'm getting ready for dinner with friends downtown, and I want something stylish to wear.",
+            "I want to make sure my look matches the vibe of the upscale restaurant I'm heading to tonight."
+        ]
+    },
+    "1412633792489426": {
+        "image_file": "CB801FDBD6D3C5E96A73BC807F98F88F_05_94.jpg",
+        "target_object_id": 538707,
+        "target_category": "blender",
+        "scene_reasoning": "The environment appears to be a kitchen with various kitchen appliances and utensils visible, suggesting that food preparation is taking place.",
+        "intentions": [
+            "I\u2019m pondering making a smoothie for breakfast to kickstart my day with some nutrients.",
+            "I need to prepare a quick salsa to accompany tonight's dinner.",
+            "I want to puree vegetables quickly to make a soup for lunch."
+        ]
+    },
+    "318145120280235": {
+        "image_file": "12ACD85DCDDF21D92D638611DE1C003E_03_74.jpg",
+        "target_object_id": 53526,
+        "target_category": "pear",
+        "scene_reasoning": "The image shows a kitchen counter with a plate, a bowl of fruits including bananas, and there's a knife suggesting preparation or consumption of food.",
+        "intentions": [
+            "I'm looking for a fresh option to add to my lunch.",
+            "I want a healthy snack that's quick and satisfying before heading out.",
+            "I need something clean and refreshing after my workout."
+        ]
+    },
+    "578803687205650": {
+        "image_file": "32D12CACE2C3E4D5F8456C0280925A1C_08_8.jpg",
+        "target_object_id": 142146,
+        "target_category": "kiwi",
+        "scene_reasoning": "The dimly lit room suggests a relaxed atmosphere, possibly gearing towards a nighttime or late evening snack decision.",
+        "intentions": [
+            "I'm feeling a bit peckish and need something light to snack on to wind down for the night.",
+            "I want to make a quick dish using a medley of fresh produce.",
+            "I am preparing a healthy shake and need something rich in vitamins to add in."
+        ]
+    },
+    "937620320478229": {
+        "image_file": "FB0E48F6838E3FF3F2D02BDCEE7B6CCF_04_62.jpg",
+        "target_object_id": 631825,
+        "target_category": "scissors",
+        "scene_reasoning": "The scene is a cozy children's room or study space with various books, a teddy bear, and other playful items suggestive of reading or crafting activities.",
+        "intentions": [
+            "I need to make some decorations for my room and could use something to help me with the paper.",
+            "I want to prepare a gift wrap for a book I'm giving to my friend, but I need something to cut the wrapping paper neatly.",
+            "I'm planning to rearrange my books on the shelf, and I should remove the tags from some of them."
+        ]
+    },
+    "364252588882158": {
+        "image_file": "B03C8F6404AC118818CD898898D513EF_04_9.jpg",
+        "target_object_id": 478354,
+        "target_category": "flying disc",
+        "scene_reasoning": "The user is in a living room preparing for outdoor activities, as indicated by the casual footwear, sunscreen, and sun hat on the table.",
+        "intentions": [
+            "I'm meeting friends for a game in the park and need to grab that item for the activity.",
+            "It's such a sunny day, I want to challenge my dog to a fun session outside.",
+            "I've got some free time and I am planning an energetic workout outdoors with friends."
+        ]
+    },
+    "1135414320344014": {
+        "image_file": "2389E8741D5933AD88CDD6F272155BB7_10_130.jpg",
+        "target_object_id": 95413,
+        "target_category": "armchair",
+        "scene_reasoning": "A living room setting with cozy seating options near the curtains suggests a space for relaxation or reading.",
+        "intentions": [
+            "I need a comfortable spot to sit down and enjoy my book.",
+            "I want to relax for a bit and need a place to rest here.",
+            "I just need to sit and take a moment to plan my day."
+        ]
+    },
+    "1198862383980403": {
+        "image_file": "61068B80F42FBBA914DE7342A5D929A7_03_88.jpg",
+        "target_object_id": 257495,
+        "target_category": "muffin",
+        "scene_reasoning": "The image shows a kitchen counter with packaged bread and snacks, suggesting a setting where someone might be preparing a meal or grabbing a quick bite.",
+        "intentions": [
+            "I'm in a rush this morning and need a quick treat before heading out.",
+            "I'm feeling a bit peckish after breakfast and want something small to satisfy my hunger.",
+            "I'm planning to have a friend over for tea and want to arrange a nice little snack assortment."
+        ]
+    },
+    "463302348837770": {
+        "image_file": "B0C89825EA279873328EC35FB73129CA_06_0.jpg",
+        "target_object_id": 480466,
+        "target_category": "cupboard",
+        "scene_reasoning": "The image shows a storage space or kitchen area, indicating it might contain supplies or food items.",
+        "intentions": [
+            "I need to find the ingredients for lunch, it's time to start cooking.",
+            "I need to grab my cleaning supplies to tidy up the room.",
+            "I'm looking for some art supplies for my project, so I can get to work."
+        ]
+    },
+    "367328728557103": {
+        "image_file": "DA326B4367732C0C22580C1D34511A60_08_21.jpg",
+        "target_object_id": 561949,
+        "target_category": "light bulb",
+        "scene_reasoning": "The environment shown is a bedroom with a lamp on a nightstand, suggesting a need for adjusting the room lighting.",
+        "intentions": [
+            "It's getting late and I need to create a cozy lighting setup for winding down before bed.",
+            "I want to replace the old light source so the lamp can provide better illumination.",
+            "I am setting up the room and need to ensure proper lighting before using the lamp."
+        ]
+    },
+    "970439357240906": {
+        "image_file": "131F9AEC88DB8646F4FBF787C4844A8D_09_19.jpg",
+        "target_object_id": 54600,
+        "target_category": "paper",
+        "scene_reasoning": "The image shows a dimly-lit room with a desk containing books and writing instruments, indicating a study or workspace setting.",
+        "intentions": [
+            "I need to jot down notes from the lecture audio I just heard.",
+            "I want to brainstorm and outline ideas for my essay.",
+            "I need something to sketch a quick design concept."
+        ]
+    },
+    "917395692275956": {
+        "image_file": "DBC756D9397DB2B42D95E0B205082188_05_28.jpg",
+        "target_object_id": 569889,
+        "target_category": "filing cabinet",
+        "scene_reasoning": "The image shows an office-like setting with documentation materials placed on a storage unit, suggesting a need for organizing or accessing important papers.",
+        "intentions": [
+            "I need to find the contract documents for the meeting this afternoon.",
+            "I'm trying to organize my past project files to clear up my workspace.",
+            "I need to add the new report to my archived paperwork before I forget."
+        ]
+    },
+    "1327239574420724": {
+        "image_file": "5AEE758656B8643194234ED1073FCA9F_04_41.jpg",
+        "target_object_id": 243239,
+        "target_category": "bicycle",
+        "scene_reasoning": "The scene shows an outdoor snowy environment, with a parked bicycle and a house nearby, suggesting preparation for an outdoor activity or transport need.",
+        "intentions": [
+            "I want to get some exercise and fresh air despite the chilly weather.",
+            "I'm planning to visit a friend's house nearby and need a quick way to get there.",
+            "I'm looking to clear my mind with a peaceful ride through the neighborhood."
+        ]
+    },
+    "906496220006482": {
+        "image_file": "D626E6CDB5D6DDD1A5F2A3BA0D640E44_09_32.jpg",
+        "target_object_id": 555597,
+        "target_category": "toaster",
+        "scene_reasoning": "The image shows a kitchen countertop with various appliances typically used for preparing food, indicating potential breakfast or snack preparation.",
+        "intentions": [
+            "I need a quick solution for my breakfast since I\u2019m running late.",
+            "I\u2019m craving some warm bread to start my day off right.",
+            "I want to warm up my sandwich bread to give it a nice crispy texture."
+        ]
+    },
+    "660186991796348": {
+        "image_file": "39342EA50B796E2DC62EA5B59EC42D87_02_111.jpg",
+        "target_object_id": 161320,
+        "target_category": "tennis racket",
+        "scene_reasoning": "The scene shows a sports bag, a can of balls, and other athletic equipment, indicating a preparation for a physical workout or sporting activity.",
+        "intentions": [
+            "I need to get a workout in today, and heading to the courts will be perfect.",
+            "There's a practice session scheduled with my coach, and I need the gear to join.",
+            "I'm excited to have some fun on the court with my friends, so I need my equipment to be ready."
+        ]
+    },
+    "687733975730774": {
+        "image_file": "5002E478D0C8A5AAECA6EC9718BAED3C_07_58.jpg",
+        "target_object_id": 217355,
+        "target_category": "earrings",
+        "scene_reasoning": "The image shows a dressing table with various personal care items, suggesting preparation for an outing or an event.",
+        "intentions": [
+            "I'm getting ready for a dinner with friends and want something to complement my outfit.",
+            "I feel like adding a touch of elegance to my look for the upcoming party.",
+            "I'm meeting someone special and want to make a good impression with my appearance."
+        ]
+    },
+    "3140854019528373": {
+        "image_file": "EC24FC88DC0B384C072A6A8CE83FA787_01_49.jpg",
+        "target_object_id": 596570,
+        "target_category": "kettle",
+        "scene_reasoning": "The image depicts a kitchen counter with a toaster next to a metallic container, suggesting a morning routine scenario involving breakfast or drinks.",
+        "intentions": [
+            "I'm feeling a bit cold, and I want to warm up with a hot cup of tea.",
+            "I need to prepare a quick breakfast, and boiling some water for oatmeal will save time.",
+            "It's time for my afternoon break, and I could use something soothing to sip on."
+        ]
+    },
+    "337391101640748": {
+        "image_file": "5ACE63C28B5621980694D971966ACD59_09_43.jpg",
+        "target_object_id": 243087,
+        "target_category": "laptop",
+        "scene_reasoning": "The environment appears to be a cluttered bedroom setting with various personal items around, including beauty and care products, suggesting it is a private space for relaxation or personal organization.",
+        "intentions": [
+            "I need to send out some urgent emails before heading out to complete other tasks.",
+            "It's time to catch up on my favorite series while I wind down for the evening.",
+            "I need to finalize my trip itinerary and book accommodations before prices change."
+        ]
+    },
+    "1026110288253308": {
+        "image_file": "B5F0A2BDEBDE598CD51F04985C99F964_08_5.jpg",
+        "target_object_id": 495205,
+        "target_category": "wallet",
+        "scene_reasoning": "The image shows a table with various items including mobile phones and glasses, indicating preparation for leaving or traveling.",
+        "intentions": [
+            "I need to pay my bills, and I should grab what I use to keep my cards and money.",
+            "I'm heading out for errands, I should take along my personal belonging where I store cash.",
+            "I'm planning a trip soon, and I need to make sure my identification is secure and easily accessible."
+        ]
+    },
+    "374779174464988": {
+        "image_file": "C336F18031380F0A81054C3939B4D31F_02_80.jpg",
+        "target_object_id": 524396,
+        "target_category": "spoon",
+        "scene_reasoning": "The scene shows a kitchen countertop with a mug and some bread, indicating the person is preparing for breakfast or a snack.",
+        "intentions": [
+            "I want to stir the coffee in my mug so it tastes right.",
+            "I'm about to enjoy my yogurt, and I need something to scoop it with.",
+            "It's time to serve my cereal, and I require a way to eat it properly."
+        ]
+    },
+    "3023218251265319": {
+        "image_file": "5749AB7919BDB9A085326E1D236A3A7D_09_92.jpg",
+        "target_object_id": 234087,
+        "target_category": "boot",
+        "scene_reasoning": "The image shows a hallway near a door with various footwear and accessories scattered on the floor, suggesting preparation for going outside.",
+        "intentions": [
+            "I need something sturdy to protect my feet outdoors today.",
+            "It's wet and muddy outside, I need something appropriate for rough terrain.",
+            "I'm heading out for a walk and I need to wear something that covers my legs."
+        ]
+    },
+    "367329954859869": {
+        "image_file": "7B030EFDA9234B84C8852D601707A10F_08_72.jpg",
+        "target_object_id": 317707,
+        "target_category": "teapot",
+        "scene_reasoning": "The image shows a teapot on a table with mugs, suggesting a setting for preparing hot beverages.",
+        "intentions": [
+            "I want to make a warm drink to help me unwind after a long day.",
+            "I'm preparing to have a cozy afternoon tea session with my friends.",
+            "I need something to help soothe my throat, a homemade infusion would be perfect."
+        ]
+    },
+    "528259001830357": {
+        "image_file": "1BEE2147FD9943A5B60DBCB63D090BD2_02_92.jpg",
+        "target_object_id": 73824,
+        "target_category": "yoga mat",
+        "scene_reasoning": "The scene is indoors with casual footwear and workout accessories, indicating preparation for a fitness activity.",
+        "intentions": [
+            "I want to do some stretching exercises to relax before heading out.",
+            "I need a spot to comfortably lie down for post-workout meditation.",
+            "I'm preparing for a home workout session and need a designated space."
+        ]
+    },
+    "3299701766908514": {
+        "image_file": "2D768F2B0200923186151A140739816C_08_9.jpg",
+        "target_object_id": 130831,
+        "target_category": "mirror",
+        "scene_reasoning": "The image shows a person in a room with a television and a wardrobe, seemingly checking their appearance.",
+        "intentions": [
+            "I need to make sure my outfit is suitable before heading out for the evening.",
+            "I want to check if my face and hair are in order since I've got an important video call soon.",
+            "I need to ensure everything is in place as I prepare myself for an upcoming interview."
+        ]
+    },
+    "487492359602420": {
+        "image_file": "08927FD18D6475238230A759D428917E_04_31.jpg",
+        "target_object_id": 24412,
+        "target_category": "tennis ball",
+        "scene_reasoning": "The image shows a kitchen table with various sports equipment, indicating preparation for an athletic activity.",
+        "intentions": [
+            "I plan to go for a quick matching session with my friends and need to pack my gear.",
+            "My dog needs some exercise, and I want to take him outside for a playful game.",
+            "I am teaching my kid how to coordinate sports, and we need something for practice drills to start."
+        ]
+    },
+    "4702708083175388": {
+        "image_file": "BE72E7267A323A1089F393E471B4ECCC_04_63.jpg",
+        "target_object_id": 511785,
+        "target_category": "spatula",
+        "scene_reasoning": "The image shows a small table with various items, suggesting that it could be in a living room or an informal dining area where one might prepare quick meals or snacks.",
+        "intentions": [
+            "I'm planning to make some pancakes and I need to get my ingredients mixed and ready.",
+            "I just grilled some sandwiches and need to flip them over without making a mess.",
+            "It's time to prepare a quick stir-fry and I need to get my vegetables cooked evenly."
+        ]
+    },
+    "1094083898093627": {
+        "image_file": "BE4B7E0941A0449167B5E728D0CD6F57_08_23.jpg",
+        "target_object_id": 510944,
+        "target_category": "goggles",
+        "scene_reasoning": "The image shows a collection of swim-related items near a door, indicating preparation or return from swimming activities.",
+        "intentions": [
+            "I need to protect my eyes while swimming, especially in bright sunlight.",
+            "I want to enjoy a clear view underwater during my swim session.",
+            "I'd like to ensure my vision isn't hindered by water splashes as I play in the pool."
+        ]
+    },
+    "1035606343657101": {
+        "image_file": "B3FAB41372EB0ADC3124BF2BB1615960_04_32.jpg",
+        "target_object_id": 490035,
+        "target_category": "hair dryer",
+        "scene_reasoning": "The image shows a bed with various hair styling and grooming products laid out, indicating that the person is preparing to care for and style their hair.",
+        "intentions": [
+            "I just showered and need to get my hair dry quickly before heading out.",
+            "I want to shape my hairstyle more effectively for a party tonight.",
+            "I need a tool to help me freshen up and add volume to my hair."
+        ]
+    },
+    "978415566407255": {
+        "image_file": "D14B15F37218BDCF4F8BF4937BAE2186_03_93.jpg",
+        "target_object_id": 550783,
+        "target_category": "high heels",
+        "scene_reasoning": "The environment appears to be a bedroom with elegant attire scattered on the floor, suggesting preparation for a formal event or night out.",
+        "intentions": [
+            "I need to get ready for the gala tonight and complete my ensemble.",
+            "I have an important dinner date, and I want to look my best.",
+            "I am about to attend a business event and need to project a professional image."
+        ]
+    },
+    "456718406178986": {
+        "image_file": "D3976969236659E688BB418F2D53EADD_01_3.jpg",
+        "target_object_id": 553478,
+        "target_category": "banana",
+        "scene_reasoning": "In the kitchen, there is a fruit bowl containing various fruits, suggesting the person might be preparing a snack or meal.",
+        "intentions": [
+            "I'm feeling a bit hungry but don't want a heavy meal, just something healthy to quickly boost my energy.",
+            "I'm planning to make a smoothie and need something to add sweetness and creaminess.",
+            "It's almost time for my workout and I need a quick, natural snack to fuel me up."
+        ]
+    },
+    "245112591154152": {
+        "image_file": "EF3E1C56BD16B9F445EB39BCA93AC832_06_106.jpg",
+        "target_object_id": 605100,
+        "target_category": "sneakers",
+        "scene_reasoning": "The photo shows a pair of small sporty, casual footwear on a wooden floor, potentially indicating a setting suitable for a child preparing to go outside or for an indoor play session.",
+        "intentions": [
+            "I'm taking my little one to the playground, so I need to get them ready with appropriate footwear.",
+            "We're about to head out for a family walk, and it's time to ensure the kids have suitable shoes on.",
+            "It's a bit chilly on the floor, and I want to make sure the kids have something comfortable on their feet inside."
+        ]
+    },
+    "632121528078336": {
+        "image_file": "95AA13ED340C1340AB77BE787ED9618E_10_109.jpg",
+        "target_object_id": 402525,
+        "target_category": "suitcase",
+        "scene_reasoning": "The image shows a dimly lit area, possibly a storage or basement, with various household items indicating preparations or storage activities.",
+        "intentions": [
+            "I need to gather some things for my trip tomorrow and get them stored securely.",
+            "I'm planning to move some stuff to my new place and need to pack them efficiently.",
+            "It's time to put away some seasonal clothes to make space in my closet."
+        ]
+    },
+    "377706927458738": {
+        "image_file": "C5C5D4CDA9C61BEBF06AFFE0D872C7A9_10_101.jpg",
+        "target_object_id": 529224,
+        "target_category": "door handle",
+        "scene_reasoning": "The image shows a closed door with dark surroundings, suggesting it's part of an indoor space like a hallway.",
+        "intentions": [
+            "I need to leave this room and head outside.",
+            "My friend is waiting on the other side, and I should join them.",
+            "I need to check if I locked the door properly before heading to bed."
+        ]
+    },
+    "1128617754598652": {
+        "image_file": "EF36BADB6F22866020CF8A1C521FF41B_01_93.jpg",
+        "target_object_id": 604524,
+        "target_category": "chest of drawers",
+        "scene_reasoning": "The image shows a tidy bedroom with a large storage unit, suggesting it's used for organizing personal items and clothing.",
+        "intentions": [
+            "I'm trying to find my sweater because it's getting chilly.",
+            "I need to organize my accessories and socks, they're all over the place.",
+            "I'm packing for a trip and need to collect my clothes."
+        ]
+    },
+    "438179588336596": {
+        "image_file": "002A3C7C0EBB7191A7B312712D3FD527_06_119.jpg",
+        "target_object_id": 1102,
+        "target_category": "detergent",
+        "scene_reasoning": "The scene shows a dining table with some utensils, suggesting recent food preparation or meal consumption nearby.",
+        "intentions": [
+            "I just finished eating and the plates need to be cleaned.",
+            "There's a sticky spill on the table that needs to be taken care of.",
+            "I need to wash my hands properly after handling some oily food."
+        ]
+    },
+    "912600695940732": {
+        "image_file": "621E52F32D69A0F03BEAD686F37CEB98_08_71.jpg",
+        "target_object_id": 261431,
+        "target_category": "washing machine",
+        "scene_reasoning": "The image shows a laundry area with various laundry supplies nearby, indicating the task is related to cleaning clothes.",
+        "intentions": [
+            "I've got a pile of dirty clothes that I need to clean before the weekend.",
+            "I accidentally spilled some coffee on my shirt earlier today, and I need to get it cleaned.",
+            "I need to freshen up my gym clothes before heading to the workout session tomorrow."
+        ]
+    },
+    "757435585683382": {
+        "image_file": "3A955398EE693DFC0101F5879C1B41D8_02_102.jpg",
+        "target_object_id": 163504,
+        "target_category": "dice",
+        "scene_reasoning": "The image shows a tabletop with various personal items, suggesting a relaxed indoor environment where someone might unwind or engage in leisure activities.",
+        "intentions": [
+            "I want to throw these to see who goes first in our board game session.",
+            "I'm feeling lucky tonight, let's get some friendly competition going.",
+            "It's time to settle our decision the fun way with a quick roll."
+        ]
+    },
+    "1199105927285697": {
+        "image_file": "F6C7E92952698D1EB1E9ECCB9E70997A_10_37.jpg",
+        "target_object_id": 624115,
+        "target_category": "bathroom cabinet",
+        "scene_reasoning": "The scene is inside a bathroom with a sink and storage areas, suggesting an intimate space for personal care tasks.",
+        "intentions": [
+            "I need to grab something to clean and tidy up this bathroom quickly.",
+            "I forgot where I put my skincare products this morning, and I need them to finish my routine.",
+            "I need to find a remedy for my headache before starting my morning activities."
+        ]
+    },
+    "426579882603205": {
+        "image_file": "14206D7041BEE38045C9BECC0C78BED9_06_99.jpg",
+        "target_object_id": 57003,
+        "target_category": "house/car key",
+        "scene_reasoning": "The scene depicts a glass table with sunglasses, a phone, and a few personal items on its surface, indicative of someone preparing to leave their home.",
+        "intentions": [
+            "I need to lock up the house before heading out for the day.",
+            "It's time to leave for work, and I don't want to be late.",
+            "I promised to pick up groceries on the way home, so I better get going."
+        ]
+    },
+    "375095641126554": {
+        "image_file": "345D0E2A33B6BF551604ED84C77AF39B_08_23.jpg",
+        "target_object_id": 147341,
+        "target_category": "camera",
+        "scene_reasoning": "The scene is a decorated room featuring ambient lighting and decorative plants, indicating a potential interest in capturing a visually appealing setup.",
+        "intentions": [
+            "I want to capture some aesthetic shots of my new room arrangement to share online.",
+            "I'm preparing to make a portfolio of my interior design work, and this room needs to be documented as part of it.",
+            "I have a passion for photography and this setup seems perfect for testing out some low-light shots."
+        ]
+    },
+    "461376635636097": {
+        "image_file": "E0F80C8C52A1CCF14D148E357AF576EB_10_66.jpg",
+        "target_object_id": 576040,
+        "target_category": "soccer ball",
+        "scene_reasoning": "The image shows a variety of sporting goods and personal items on a shelf, suggesting a setting related to physical activities or sports preparations.",
+        "intentions": [
+            "I'm heading to the park and plan to meet friends for a game.",
+            "I want to practice some kicking skills to improve my technique for the upcoming match this weekend.",
+            "There's a pick-up game starting soon, and I don't want to show up empty-handed."
+        ]
+    },
+    "669578471135887": {
+        "image_file": "E6FC3295A1B75E4AB7B4C5DDF51389BE_08_28.jpg",
+        "target_object_id": 589710,
+        "target_category": "light bulb",
+        "scene_reasoning": "The image shows a storage shelf in a dimly lit space, where various items are kept, indicating the user might be in need of something to brighten up the environment.",
+        "intentions": [
+            "I need to change the broken illumination in the living room.",
+            "I am trying to replace the outdated fixtures in my reading area.",
+            "I'm about to host people, and I need to ensure the dining space is well-lit."
+        ]
+    },
+    "1198562477344751": {
+        "image_file": "FF88A7C6D053A261443018AB9B453874_02_19.jpg",
+        "target_object_id": 643031,
+        "target_category": "wrench",
+        "scene_reasoning": "The scene shows a workshop with various mechanical tools and a drone project on the table, indicating a focus on repair or assembly tasks.",
+        "intentions": [
+            "I need to tighten the bolts on this drone to make sure it's ready for testing.",
+            "I want to adjust the size of a fitting for this project to ensure everything fits perfectly.",
+            "I need to remove a stubborn component from the assembly to replace it with a new one."
+        ]
+    },
+    "657425178733580": {
+        "image_file": "6F8B50E7857621AF26027CCDBAB8FBB7_05_20.jpg",
+        "target_object_id": 287688,
+        "target_category": "computer monitor",
+        "scene_reasoning": "The scene shows an office desk with a computer setup, suggesting that the person is involved in some work-related tasks possibly requiring digital interaction.",
+        "intentions": [
+            "I need to review the latest updates on that report before the meeting starts.",
+            "I want to check our project timeline to ensure we're on track for the deadline.",
+            "I have to respond to some emails that came in about the new campaign."
+        ]
+    },
+    "671308510727325": {
+        "image_file": "5704B5829725AB6FEAAD0C959AA59D06_03_90.jpg",
+        "target_object_id": 230778,
+        "target_category": "door handle",
+        "scene_reasoning": "The image shows a decorative star and a checklist on a door with bedtime tasks, indicating preparation for bed in a child's room.",
+        "intentions": [
+            "I need to complete my bedtime checklist and get some rest.",
+            "I want to leave the room to check if I finished all my evening chores.",
+            "It's time to join everyone in the living room for some evening family time."
+        ]
+    },
+    "936944970520466": {
+        "image_file": "3DAB215803C21DFF410278DEEAC3AFD0_01_30.jpg",
+        "target_object_id": 174198,
+        "target_category": "cabinetry",
+        "scene_reasoning": "The scene shows a kitchen with a cabinet under a microwave, and various items like a backpack and kids' toys around, suggesting kitchen-related storage and organization activities.",
+        "intentions": [
+            "I'm trying to organize the kitchen and need a spot to store some of the less-used appliances to free up counter space.",
+            "I'm preparing a meal and looking for a place where I might have put my baking supplies last time.",
+            "I need to clean up and declutter the kitchen area to make it safer for the kids to play around."
+        ]
+    },
+    "4777467832371143": {
+        "image_file": "525BD9B3359E657595E0674F2C4EC6E4_08_7.jpg",
+        "target_object_id": 220285,
+        "target_category": "coat",
+        "scene_reasoning": "The image shows a closet space with winter clothing hanging, indicating preparation for leaving the house during cold weather.",
+        "intentions": [
+            "I need to head out soon and it's quite chilly, so I need to find something warm to wear.",
+            "I'm meeting friends outside today, and I want to be prepared for the changing weather.",
+            "I want to make sure I\u2019m dressed appropriately for a professional meeting in cooler conditions."
+        ]
+    },
+    "679947883439743": {
+        "image_file": "D3CEC2D6FFE7F40397E8BCD07A22875F_04_91.jpg",
+        "target_object_id": 554401,
+        "target_category": "muffin",
+        "scene_reasoning": "The image captures a cozy living room setting with a coffee table displaying a cup of coffee, a book, and a TV remote, suggesting a relaxing atmosphere.",
+        "intentions": [
+            "I'm ready to enjoy a delightful snack with my coffee while I continue reading this book.",
+            "I need something to nibble on as I settle in for a movie marathon on the couch.",
+            "It's time for a quick afternoon break and I want to treat myself to something sweet with my tea."
+        ]
+    },
+    "464928148616690": {
+        "image_file": "C7510EB619634877401B454098A5C9BD_09_106.jpg",
+        "target_object_id": 533552,
+        "target_category": "glass jar",
+        "scene_reasoning": "The image depicts a kitchen area with various containers and utensils on a countertop, suggesting an environment where food preparation or storage could occur.",
+        "intentions": [
+            "I need to find something to store my homemade jam before it spoils.",
+            "I'm trying to organize my pantry and need a place to keep the spices fresh and easily accessible.",
+            "I\u2019m planning to make a salad dressing and need a container to mix and store it for later use."
+        ]
+    },
+    "631987481436106": {
+        "image_file": "5EB62976279A218A0363DDD69AD6D8B0_06_67.jpg",
+        "target_object_id": 250873,
+        "target_category": "box of macaroni & cheese",
+        "scene_reasoning": "A dining table is set with utensils and a colorful bowl, indicating preparations for a meal, possibly involving a quick-to-make dish.",
+        "intentions": [
+            "I need to make a quick meal for my kids before they get too hungry.",
+            "I want to prepare something simple and comforting while catching up on my favorite show.",
+            "I'm feeling exhausted and crave a convenient meal option that doesn't require much effort."
+        ]
+    },
+    "654520909004735": {
+        "image_file": "76873E849162CC81213DCFE12214C052_06_1.jpg",
+        "target_object_id": 308360,
+        "target_category": "filing cabinet",
+        "scene_reasoning": "The image shows a clean office floor with some cables and a blue basket in the background, suggesting an organized setting where office work is done.",
+        "intentions": [
+            "I need to find the paperwork for the meeting later, it should be stored around here.",
+            "I have to organize the reports for the audit, so they are easily accessible.",
+            "Where can I check for the project files that were sent last week?"
+        ]
+    },
+    "3504480916454707": {
+        "image_file": "A3E47D263861F841331EEE8F767B92C3_10_117.jpg",
+        "target_object_id": 442540,
+        "target_category": "banana",
+        "scene_reasoning": "The scene is a kitchen countertop with dinnerware and cups, suggesting preparation for a meal or snack.",
+        "intentions": [
+            "I need a quick snack to recharge before heading out.",
+            "I'm prepping ingredients for a smoothie later on.",
+            "I'm putting together breakfast and need something to top my cereal."
+        ]
+    },
+    "243034257988756": {
+        "image_file": "DAB30326A3BC494B4E05BFA9E80B75D4_10_53.jpg",
+        "target_object_id": 563794,
+        "target_category": "football",
+        "scene_reasoning": "The image depicts sports gear and attire laid out, suggesting that the person is preparing for a physical activity related to sports.",
+        "intentions": [
+            "I need to practice my skills before the big game this weekend.",
+            "I want to enjoy a friendly match with friends at the local field to relax and have fun.",
+            "I need to get some exercise after a long day, and this is my favorite way to do it."
+        ]
+    },
+    "278602211045383": {
+        "image_file": "346162883947989D10C8CE11EA6728C6_02_65.jpg",
+        "target_object_id": 147560,
+        "target_category": "drawer",
+        "scene_reasoning": "In a living space with wooden flooring, there is an open compartment showing various stationary and personal items on the floor around it.",
+        "intentions": [
+            "I need to find a place to organize these scattered items and keep things tidy.",
+            "It's important to put away my belongings that's been left out in the open for safety and organization.",
+            "I need to store personal items securely so they don't get lost or damaged."
+        ]
+    },
+    "926549841377627": {
+        "image_file": "53721C23AC6CBACA1526616B525A58C0_08_3.jpg",
+        "target_object_id": 223412,
+        "target_category": "sunglasses",
+        "scene_reasoning": "The image depicts a table with personal belongings laid out, suggesting preparations for going outside.",
+        "intentions": [
+            "I want to protect my eyes from the bright sunlight outside while walking.",
+            "I'm heading out for a drive and need something to reduce the glare from the sun.",
+            "I plan to relax in the garden and require something to shield my eyes from the harsh light."
+        ]
+    },
+    "275367327996662": {
+        "image_file": "6A0626D20F1F2F8955A5BF368056F8C4_09_59.jpg",
+        "target_object_id": 276983,
+        "target_category": "computer keyboard",
+        "scene_reasoning": "The scene shows a workspace equipped with computers and accessories, suggesting activities related to office work or studying.",
+        "intentions": [
+            "I need to type up my notes from today\u2019s meeting.",
+            "I need to finish my draft for the report that\u2019s due tomorrow.",
+            "I want to respond to a few emails quickly before heading out."
+        ]
+    },
+    "4851225514946744": {
+        "image_file": "9985216EA42C1161319FF2178A85405E_07_46.jpg",
+        "target_object_id": 413338,
+        "target_category": "pear",
+        "scene_reasoning": "The image shows a kitchen countertop with various fruits and a cutting tool, suggesting preparation for a healthy snack or meal.",
+        "intentions": [
+            "I want to make a fresh fruit salad for a delightful afternoon snack.",
+            "I need a quick healthy option for breakfast before heading into my busy day.",
+            "I am preparing ingredients for a smoothie to enjoy as a refreshing drink."
+        ]
+    },
+    "486121399894767": {
+        "image_file": "94C9E910664D442972763B5B4E1EBDD0_04_111.jpg",
+        "target_object_id": 399005,
+        "target_category": "vase",
+        "scene_reasoning": "The image depicts a living room area with a television on a stand, and floral decorations nearby, suggesting a need for enhancing the room's ambiance.",
+        "intentions": [
+            "I want to make the room feel more welcoming for my guests this evening.",
+            "I am trying to brighten up the living room with some fresh touches and decorations.",
+            "I'm looking for something to add a pop of color to my entertainment area."
+        ]
+    },
+    "1364119054024042": {
+        "image_file": "043CFF0CB8026649C6F3B54C86CE2ACF_05_122.jpg",
+        "target_object_id": 10878,
+        "target_category": "computer keyboard",
+        "scene_reasoning": "The scene shows a living room setup with a computer on a desk and connections visible, suggesting a casual work or study environment.",
+        "intentions": [
+            "I need to respond to emails and manage my tasks for the day.",
+            "I want to play some online games to relax after a long day.",
+            "I need to finish my assignment, and typing out my thoughts is crucial right now."
+        ]
+    },
+    "493626655622605": {
+        "image_file": "5E6591E3D72EC38220B440EC4B26C6B1_05_23.jpg",
+        "target_object_id": 249034,
+        "target_category": "spoon",
+        "scene_reasoning": "The image shows a dining setting with a table, snacks, condiments, and a paper plate, indicating a snack or meal situation.",
+        "intentions": [
+            "I'm about to have some yogurt and need something to help me eat it.",
+            "This soup smells delicious but it's too hot to drink directly, I need something to enjoy it properly.",
+            "My cereal is getting soggy, I need to start eating it before it becomes mush."
+        ]
+    },
+    "995680121386218": {
+        "image_file": "1EEDB104A07BAEFCC8988152787F7912_09_72.jpg",
+        "target_object_id": 79923,
+        "target_category": "game controller/pad",
+        "scene_reasoning": "The scene contains a household environment with a game accessory, indicating a relaxing or entertaining setting.",
+        "intentions": [
+            "I need to unwind after a stressful day, maybe I'll dive into my favorite virtual adventure.",
+            "I'm meeting friends online for a competitive match, got to get ready for it.",
+            "I promised my sibling a gaming session, it's time to keep that promise."
+        ]
+    },
+    "2147234495428341": {
+        "image_file": "049E2447197F7D9D69F85F6C4F83184C_04_13.jpg",
+        "target_object_id": 11804,
+        "target_category": "jug",
+        "scene_reasoning": "The kitchen scene includes a stove with a pan and a container filled with water, indicating cooking activity or preparation for a meal.",
+        "intentions": [
+            "I need to add water to the pot on the stove to start cooking pasta.",
+            "I should pour some water into a glass to have a drink while cooking.",
+            "I want to fill the kettle with water for making tea."
+        ]
+    },
+    "656707855626660": {
+        "image_file": "F3981B5906F9E133DCA2B5A305DCFEBF_06_2.jpg",
+        "target_object_id": 617277,
+        "target_category": "baseball glove",
+        "scene_reasoning": "The image shows a living room with a couch where various items are placed, including sports equipment, suggesting a preparation for an outdoor activity.",
+        "intentions": [
+            "I'm getting ready for a game and need to pick up something to help catch the ball.",
+            "I'm about to head out to the park for practice and need something that's essential for fielding.",
+            "I promised to play catch with my friend, and I need something to make catching easier."
+        ]
+    },
+    "318627716986008": {
+        "image_file": "B7E00A7CDABE30C1C6C33E8A963E5C74_10_90.jpg",
+        "target_object_id": 498594,
+        "target_category": "boot",
+        "scene_reasoning": "The image shows a cluttered area in a bedroom with various types of footwear, suggesting preparations for leaving or organizing the space.",
+        "intentions": [
+            "I'm heading out on a hike and need something sturdy to protect my feet.",
+            "I need to tidy up this room and organize my footwear collection.",
+            "I have a job interview, and I'm looking for something suitable to wear with my outfit."
+        ]
+    },
+    "470756184520816": {
+        "image_file": "0BE636006EBA51E67C3968CD09B0943F_09_2.jpg",
+        "target_object_id": 35550,
+        "target_category": "suit",
+        "scene_reasoning": "The image shows a bedroom with a neatly arranged outfit on the bed, possibly indicating preparation for an event or important occasion.",
+        "intentions": [
+            "I have an important interview or meeting today, and I want to make a good impression.",
+            "I'm getting ready for a formal event this evening and need to look my best.",
+            "I need to quickly change into something appropriate before heading out for a special dinner."
+        ]
+    },
+    "495891571892464": {
+        "image_file": "A389C5E12F39045C8B3F3748F37B615E_02_43.jpg",
+        "target_object_id": 440607,
+        "target_category": "boot",
+        "scene_reasoning": "The entrance area with various footwear options suggests that the user is deciding on something to wear for an outdoor activity.",
+        "intentions": [
+            "I plan to go on a hike today and need footwear suitable for rugged terrain.",
+            "It's chilly outside, and my feet need something durable to keep them warm.",
+            "I'm heading out into the rain, so I need sturdy footwear that won't let water seep through."
+        ]
+    },
+    "506039184189386": {
+        "image_file": "5D32CF77F0048BE3F803A82F53243AF0_06_72.jpg",
+        "target_object_id": 247513,
+        "target_category": "cutting board",
+        "scene_reasoning": "The scene shows a kitchen with a sink and stove, indicating meal preparation activities.",
+        "intentions": [
+            "I need a space to prepare ingredients for tonight\u2019s dinner quickly.",
+            "I want to keep the counters clean while I prepare the veggies.",
+            "I'm planning to cook and need an appropriate area to handle the herbs safely."
+        ]
+    },
+    "275438951389317": {
+        "image_file": "7763B58C79603E623A58AB0F53FA8352_08_46.jpg",
+        "target_object_id": 310874,
+        "target_category": "closet",
+        "scene_reasoning": "The image depicts a room with a closed door and a limited amount of light, suggesting the user might be dealing with evening or nighttime routines and needs access to stored items.",
+        "intentions": [
+            "I need to find my pajamas so that I can get ready for bed.",
+            "I want to grab a jacket before heading outside since it might be chilly.",
+            "I need to organize my clothes because things have become a bit messy in here."
+        ]
+    },
+    "3012116202372773": {
+        "image_file": "16B58A9663CC093318EEC3B5AE67DEAE_08_0.jpg",
+        "target_object_id": 61814,
+        "target_category": "door handle",
+        "scene_reasoning": "The user is in front of the entrance to a room, possibly needing to enter or exit.",
+        "intentions": [
+            "I forgot my keys and can't get in, I need to figure out how to gain access.",
+            "The room is getting stuffy, I need to open the way to let some fresh air in.",
+            "I can hear them calling me from outside, I need to go and see what they want."
+        ]
+    },
+    "1769834156555715": {
+        "image_file": "EF6613472BD326FE6A414656865A471C_03_75.jpg",
+        "target_object_id": 605462,
+        "target_category": "toaster",
+        "scene_reasoning": "The scene displays a kitchen countertop with common breakfast appliances and utensils, suggesting that the user might be preparing a morning meal.",
+        "intentions": [
+            "I want to have some warm bread for breakfast to start my day off right.",
+            "I'm feeling hungry and need something quick to prepare before heading out.",
+            "I need a quick snack to hold me over until lunchtime."
+        ]
+    },
+    "713266986330765": {
+        "image_file": "AEB36F8E3EBC6E1E48725256E13932D8_09_34.jpg",
+        "target_object_id": 473110,
+        "target_category": "hair dryer",
+        "scene_reasoning": "The image shows a dressing area with grooming tools and hair styling products, suggesting preparation for personal care.",
+        "intentions": [
+            "I'm getting ready for a big event and need my hair to look perfect.",
+            "I just showered and need to dry my hair quickly before heading out.",
+            "I want to style my hair with some volume for the day."
+        ]
+    },
+    "689846749053672": {
+        "image_file": "A1C09061081BB6FF8BB1C92FA68001C7_08_60.jpg",
+        "target_object_id": 435340,
+        "target_category": "lamp",
+        "scene_reasoning": "The image shows a bedroom with a bedside table and a light source, suggesting a need for illumination for activities such as reading or relaxing.",
+        "intentions": [
+            "It's getting dark, and I want to read my book before sleeping.",
+            "I feel like unwinding with some light music and need to set the right mood.",
+            "I need to find something on my nightstand and require some light to see clearly."
+        ]
+    }
+}

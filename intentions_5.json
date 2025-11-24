@@ -1,0 +1,57 @@
+{
+    "299680365479923": {
+        "image_file": "14522AB113ACAABA0157F6077C37EBA7_05_74.jpg",
+        "target_object_id": 57528,
+        "target_category": "spoon",
+        "scene_reasoning": "The scene is set at a dining table, prepared for breakfast with an egg placed in an egg cup, suggesting a meal is about to begin.",
+        "intentions": [
+            "I'm planning to enjoy this boiled egg, so I need something to eat it with easily.",
+            "I've got some yogurt in the fridge that I'm planning to have with breakfast.",
+            "I need to stir my cereal before I start eating it."
+        ]
+    },
+    "994761651170036": {
+        "image_file": "09308149E3AC4EDDEACB5E5991B80AD2_08_108.jpg",
+        "target_object_id": 28597,
+        "target_category": "plate",
+        "scene_reasoning": "The image shows a kitchen counter with utensils and bottles, suggesting meal preparation or cleaning activities.",
+        "intentions": [
+            "I'm about to serve dinner and I need something to arrange the food on for the meal.",
+            "I want to clean up after lunch and I need to put all the leftover scraps somewhere temporarily before wiping the surface.",
+            "I'm organizing the kitchen and I need a place to sort smaller ingredients before moving them into containers."
+        ]
+    },
+    "359071419185351": {
+        "image_file": "9B7E2F18F297744A41ABE6069F94AD8F_01_60.jpg",
+        "target_object_id": 417047,
+        "target_category": "heater",
+        "scene_reasoning": "The image shows a part of a bedroom with a low bed, suggesting a cozy space where someone may seek comfort and warmth.",
+        "intentions": [
+            "The room feels quite chilly, and I want to warm it up a bit before relaxing.",
+            "I'm about to snuggle in with a book and could use some warmth to make it more comfortable.",
+            "It's a cold morning and I need to warm up the room so I can get started with my day without freezing."
+        ]
+    },
+    "3155029908086198": {
+        "image_file": "709F89103A26A801E32E5754824C754C_05_109.jpg",
+        "target_object_id": 290396,
+        "target_category": "scarf",
+        "scene_reasoning": "The image shows a dining room with a wooden table, a jacket placed on one of the chairs, keys, and a piano nearby, suggesting someone might be preparing to leave for an outdoor activity, possibly in cool weather.",
+        "intentions": [
+            "I'm heading out for a walk, and it's chilly outside so I need to bundle up.",
+            "I'm about to leave for an outdoor concert, but it's getting cold as the evening approaches.",
+            "I finished my piano practice and plan to go out, I need extra warmth against the wind."
+        ]
+    },
+    "445369343937266": {
+        "image_file": "486F6C2967C1385734B029C34FFA000E_03_6.jpg",
+        "target_object_id": 196863,
+        "target_category": "slow cooker",
+        "scene_reasoning": "The image shows a kitchen countertop with a cooking appliance, suggesting a setting suited for meal preparation.",
+        "intentions": [
+            "I need to start making dinner for later since I have a busy evening ahead and won't have time to cook.",
+            "There's a recipe I've been wanting to try that requires slow cooking all day, so I need to set this up now.",
+            "I'm preparing a meal for a gathering later and want to ensure it's nice and tender by the time everyone arrives."
+        ]
+    }
+}
