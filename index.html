@@ -1,768 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EgoObjects Intention Annotations - Interactive View</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            opacity: 0.9;
+        }
+        
+        .controls {
+            padding: 20px 30px;
+            background: #fafafa;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .control-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .control-group {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .control-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        select, input[type="text"] {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        select:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5568d3;
+        }
+        
+        .btn-secondary {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #45a049;
+        }
+        
+        .stats {
+            padding: 15px 30px;
+            background: #fff3cd;
+            border-bottom: 1px solid #ffc107;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .detail-view {
+            padding: 30px;
+        }
+        
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .detail-grid:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-image {
+            text-align: center;
+        }
+        
+        .detail-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .detail-info h3 {
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .info-item {
+            margin-bottom: 20px;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .category-badge {
+            background: #4caf50;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .intentions-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .intentions-list li {
+            padding: 12px;
+            margin-bottom: 8px;
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+        
+        .empty-state svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+        
+        @media (max-width: 768px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 EgoObjects Intention Annotations</h1>
+            <p>Select items from the dropdown to view details - Images load on demand</p>
+        </header>
+        
+        <div class="controls">
+            <div class="control-row">
+                <div class="control-group">
+                    <label for="categoryFilter">🏷️ Step 1: Filter by Category (Optional):</label>
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="searchInput">🔍 Step 2: Search Keywords (Optional):</label>
+                    <input type="text" id="searchInput" placeholder="Search by ID, category, or intention...">
+                </div>
+            </div>
+            
+            <div class="control-row">
+                <div class="control-group">
+                    <label for="itemSelect">📋 Step 3: Select Items to View:</label>
+                    <select id="itemSelect" multiple style="height: 250px; font-family: monospace; font-size: 13px;">
+                        <option value="">Loading...</option>
+                    </select>
+                    <small style="color: #666; margin-top: 8px; display: block;">
+                        💡 Hold <kbd>Ctrl</kbd> (Windows) or <kbd>Cmd</kbd> (Mac) to select multiple items, or <kbd>Shift</kbd> for range selection
+                    </small>
+                </div>
+            </div>
+            
+            <div class="control-row" style="justify-content: space-between;">
+                <div>
+                    <button class="btn btn-primary" onclick="showSelected()">🖼️ Show Selected Items</button>
+                    <button class="btn btn-secondary" onclick="clearSelection()">🔄 Clear All</button>
+                    <button class="btn btn-secondary" onclick="selectAllVisible()">✅ Select All Visible</button>
+                </div>
+                <span style="color: #666; font-size: 14px;">
+                    Showing <strong id="visibleCount">0</strong> of <strong id="totalCount2">100</strong> items
+                </span>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <span>Total: <strong id="totalCount">0</strong> items</span>
+            <span>Selected: <strong id="selectedCount">0</strong> items</span>
+        </div>
+        
+        <div class="detail-view" id="detailView">
+            <div class="empty-state">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.96-2.36L6.5 17h11l-3.54-4.71z"/>
+                </svg>
+                <h3>No items selected</h3>
+                <p>Please select one or more items from the dropdown above to view details.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let allData = {};
+        let filteredData = {};
+        
+        // Load JSON data
+        async function loadData() {
+            try {
+                const response = await fetch('./intentions.json');
+                if (!response.ok) throw new Error('Failed to load data');
+                allData = await response.json();
+                filteredData = {...allData};
+                populateDropdown();
+                populateCategoryFilter();
+                updateStats();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('itemSelect').innerHTML = '<option value="">❌ Error loading data</option>';
+            }
+        }
+        
+        function populateDropdown() {
+            const select = document.getElementById('itemSelect');
+            select.innerHTML = '';
+            
+            if (Object.keys(filteredData).length === 0) {
+                select.innerHTML = '<option value="">No items found</option>';
+                document.getElementById('visibleCount').textContent = '0';
+                return;
+            }
+            
+            Object.entries(filteredData).forEach(([imageId, item]) => {
+                const option = document.createElement('option');
+                option.value = imageId;
+                // Format: ID (first 12 chars) | Category | Filename
+                const shortId = imageId.substring(0, 12);
+                option.textContent = `[${shortId}...] ${item.target_category.padEnd(20)} | ${item.image_file}`;
+                select.appendChild(option);
+            });
+            
+            document.getElementById('visibleCount').textContent = Object.keys(filteredData).length;
+            
+            // Update selected count on change
+            select.addEventListener('change', updateSelectedCount);
+        }
+        
+        function populateCategoryFilter() {
+            const categories = [...new Set(Object.values(allData).map(item => item.target_category))].sort();
+            const select = document.getElementById('categoryFilter');
+            
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                select.appendChild(option);
+            });
+            
+            select.addEventListener('change', filterByCategory);
+        }
+        
+        function filterByCategory() {
+            const category = document.getElementById('categoryFilter').value;
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            if (!category && !searchTerm) {
+                filteredData = {...allData};
+            } else {
+                filteredData = {};
+                Object.entries(allData).forEach(([id, item]) => {
+                    const matchesCategory = !category || item.target_category === category;
+                    const matchesSearch = !searchTerm || 
+                        id.toLowerCase().includes(searchTerm) ||
+                        item.target_category.toLowerCase().includes(searchTerm) ||
+                        item.intentions.some(i => i.toLowerCase().includes(searchTerm));
+                    
+                    if (matchesCategory && matchesSearch) {
+                        filteredData[id] = item;
+                    }
+                });
+            }
+            
+            populateDropdown();
+            updateStats();
+        }
+        
+        document.getElementById('searchInput').addEventListener('input', filterByCategory);
+        
+        function updateSelectedCount() {
+            const select = document.getElementById('itemSelect');
+            const count = select.selectedOptions.length;
+            document.getElementById('selectedCount').textContent = count;
+        }
+        
+        function updateStats() {
+            const totalItems = Object.keys(allData).length;
+            document.getElementById('totalCount').textContent = totalItems;
+            document.getElementById('totalCount2').textContent = totalItems;
+            document.getElementById('selectedCount').textContent = document.getElementById('itemSelect').selectedOptions.length;
+        }
+        
+        function selectAllVisible() {
+            const select = document.getElementById('itemSelect');
+            for (let option of select.options) {
+                option.selected = true;
+            }
+            updateSelectedCount();
+        }
+        
+        function showSelected() {
+            const select = document.getElementById('itemSelect');
+            const selected = Array.from(select.selectedOptions).map(opt => opt.value);
+            
+            if (selected.length === 0) {
+                alert('Please select at least one item from the dropdown.');
+                return;
+            }
+            
+            const detailView = document.getElementById('detailView');
+            detailView.innerHTML = '';
+            
+            selected.forEach(imageId => {
+                const item = allData[imageId];
+                if (!item) return;
+                
+                const detailDiv = document.createElement('div');
+                detailDiv.className = 'detail-grid';
+                detailDiv.innerHTML = `
+                    <div class="detail-image">
+                        <img src="images/${item.image_file}" alt="${item.image_file}" loading="lazy">
+                        <p style="margin-top: 10px; color: #666; font-size: 12px;">${item.image_file}</p>
+                    </div>
+                    <div class="detail-info">
+                        <h3>Image ID: ${imageId}</h3>
+                        
+                        <div class="info-item">
+                            <div class="info-label">Category:</div>
+                            <div class="info-value"><span class="category-badge">${item.target_category}</span></div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-label">Scene Reasoning:</div>
+                            <div class="info-value">${item.scene_reasoning}</div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-label">Intentions:</div>
+                            <ol class="intentions-list">
+                                ${item.intentions.map(intent => `<li>${intent}</li>`).join('')}
+                            </ol>
+                        </div>
+                    </div>
+                `;
+                detailView.appendChild(detailDiv);
+            });
+            
+            detailView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        function clearSelection() {
+            document.getElementById('itemSelect').selectedIndex = -1;
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('searchInput').value = '';
+            filteredData = {...allData};
+            populateDropdown();
+            updateSelectedCount();
+            
+            const detailView = document.getElementById('detailView');
+            detailView.innerHTML = `
+                <div class="empty-state">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.96-2.36L6.5 17h11l-3.54-4.71z"/>
+                    </svg>
+                    <h3>No items selected</h3>
+                    <p>Please select one or more items from the dropdown above to view details.</p>
+                </div>
+            `;
+        }
+        
+        // Initialize
+        loadData();
+    </script>
+</body>
+</html>
 
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 20px;
-            }
-            table {
-                border-collapse: collapse;
-                width: 100%;
-            }
-            th {
-                background-color: #4CAF50;
-                color: white;
-                padding: 12px;
-                text-align: left;
-                position: sticky;
-                top: 0;
-            }
-            td {
-                padding: 10px;
-                border: 1px solid #ddd;
-                vertical-align: top;
-            }
-            tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-            ol {
-                margin: 0;
-                padding-left: 20px;
-            }
-            img {
-                display: block;
-                margin: 0 auto;
-                max-width: 200px;
-            }
-            .id-col {
-                width: 150px;
-            }
-            .img-col {
-                width: 220px;
-                text-align: center;
-            }
-            .cat-col {
-                width: 150px;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Intention Annotations - 100 Images</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th class="id-col">Image ID</th>
-                    <th class="img-col">Image</th>
-                    <th class="cat-col">Category</th>
-                    <th>Intentions</th>
-                </tr>
-            </thead>
-            <tbody>
-    
-                <tr>
-                    <td class="id-col">299680365479923</td>
-                    <td class="img-col"><img src="images/14522AB113ACAABA0157F6077C37EBA7_05_74.jpg" alt="14522AB113ACAABA0157F6077C37EBA7_05_74.jpg"></td>
-                    <td class="cat-col">spoon</td>
-                    <td><ol><li>I’m about to enjoy this boiled egg and need something to help scoop out the insides.</li><li>I want to add sugar to my morning coffee and need a small tool to transfer it from the container.</li><li>It’s time for breakfast, and I need a tool to stir my yogurt to mix it well.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">994761651170036</td>
-                    <td class="img-col"><img src="images/09308149E3AC4EDDEACB5E5991B80AD2_08_108.jpg" alt="09308149E3AC4EDDEACB5E5991B80AD2_08_108.jpg"></td>
-                    <td class="cat-col">plate</td>
-                    <td><ol><li>I need something to carry my sandwich from the counter to the dining table.</li><li>I want to set up a nice presentation for my dinner.</li><li>I need to sort out portions for everyone before serving.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">359071419185351</td>
-                    <td class="img-col"><img src="images/9B7E2F18F297744A41ABE6069F94AD8F_01_60.jpg" alt="9B7E2F18F297744A41ABE6069F94AD8F_01_60.jpg"></td>
-                    <td class="cat-col">heater</td>
-                    <td><ol><li>I'm feeling chilly and need to warm up the room to be comfortable.</li><li>I want to make sure the room stays cozy while I read a book in bed.</li><li>I've just come in from outside where it was cold, and I need to warm up quickly.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">3155029908086198</td>
-                    <td class="img-col"><img src="images/709F89103A26A801E32E5754824C754C_05_109.jpg" alt="709F89103A26A801E32E5754824C754C_05_109.jpg"></td>
-                    <td class="cat-col">scarf</td>
-                    <td><ol><li>It's chilly outside, and I need something to keep warm before stepping out.</li><li>I'm planning to do some errands, and I want to have a stylish addition to my outfit.</li><li>I'm getting ready to meet friends, and I want something to keep me cozy during the walk.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">445369343937266</td>
-                    <td class="img-col"><img src="images/486F6C2967C1385734B029C34FFA000E_03_6.jpg" alt="486F6C2967C1385734B029C34FFA000E_03_6.jpg"></td>
-                    <td class="cat-col">slow cooker</td>
-                    <td><ol><li>I want to start prepping dinner now so it'll be ready by tonight without me having to monitor it constantly.</li><li>I need to set up a meal that can cook while I attend to other tasks throughout the day.</li><li>I'm looking to simmer a stew while I'm out for the majority of the day, so it's perfectly done when I return.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">931173914432791</td>
-                    <td class="img-col"><img src="images/0A9CDF7364EBBFDBD4B762BA2C50EAC0_10_1.jpg" alt="0A9CDF7364EBBFDBD4B762BA2C50EAC0_10_1.jpg"></td>
-                    <td class="cat-col">boot</td>
-                    <td><ol><li>I need sturdy footwear for my hike today.</li><li>It's raining outside, I should wear something that can protect my feet.</li><li>I’m heading to the construction site, so I need something that ensures safety.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">1153265085211139</td>
-                    <td class="img-col"><img src="images/49CCC8404E37DA049B635758DBE879FE_05_85.jpg" alt="49CCC8404E37DA049B635758DBE879FE_05_85.jpg"></td>
-                    <td class="cat-col">headphones</td>
-                    <td><ol><li>I want to listen to some music or podcasts while working on my laptop.</li><li>I have a video call scheduled and I need something that will make sure I hear everything clearly.</li><li>I'm in the mood for some peace while I enjoy the view outside the window, so I need something to block out distractions.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">899621054045917</td>
-                    <td class="img-col"><img src="images/28827D88397519323AD8741CF84FFCFA_03_52.jpg" alt="28827D88397519323AD8741CF84FFCFA_03_52.jpg"></td>
-                    <td class="cat-col">television</td>
-                    <td><ol><li>I'm looking forward to unwinding with a movie this evening.</li><li>I'd love to catch up on the latest episodes of my favorite show right now.</li><li>My team is playing a crucial match today, and I don't want to miss it.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">297908372327446</td>
-                    <td class="img-col"><img src="images/CBA7C27AACBE087EE7F8152B4041B0CA_08_16.jpg" alt="CBA7C27AACBE087EE7F8152B4041B0CA_08_16.jpg"></td>
-                    <td class="cat-col">vase</td>
-                    <td><ol><li>I'm setting up a centerpiece for the coffee table to make the living room feel more inviting.</li><li>I want to add a touch of nature to the room by displaying some fresh flowers.</li><li>I need to organize the table by placing a decorative element that complements the current setup.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">622473332176402</td>
-                    <td class="img-col"><img src="images/7B342328FA30EDDC22A20735F3F1C511_02_5.jpg" alt="7B342328FA30EDDC22A20735F3F1C511_02_5.jpg"></td>
-                    <td class="cat-col">strawberry</td>
-                    <td><ol><li>I am preparing a quick healthy snack to boost my energy.</li><li>I want something fresh and sweet to add to my morning yogurt.</li><li>I'm looking to enhance the taste of my breakfast bowl with some fresh goodies.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">477106173945945</td>
-                    <td class="img-col"><img src="images/331E4876836DC9D8AFEA17D150B16AE6_03_76.jpg" alt="331E4876836DC9D8AFEA17D150B16AE6_03_76.jpg"></td>
-                    <td class="cat-col">dumbbell</td>
-                    <td><ol><li>I want to squeeze in a quick workout before starting my day.</li><li>I'm feeling stressed and need an energizing activity to help unwind.</li><li>I need to stay on track with my fitness goals by doing some strength training.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">475868883940546</td>
-                    <td class="img-col"><img src="images/B7BFCDBA3783818F6FBEE0BE2BCDD44B_08_70.jpg" alt="B7BFCDBA3783818F6FBEE0BE2BCDD44B_08_70.jpg"></td>
-                    <td class="cat-col">television</td>
-                    <td><ol><li>It's been a long day, I need some distraction to unwind before bed.</li><li>I want to catch up on my favorite series before the next episode comes out.</li><li>The room feels too quiet, I could use some background noise while I browse my phone.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">479032940522583</td>
-                    <td class="img-col"><img src="images/23A12514687578FA71D39D6F922EEF51_02_61.jpg" alt="23A12514687578FA71D39D6F922EEF51_02_61.jpg"></td>
-                    <td class="cat-col">fireplace</td>
-                    <td><ol><li>I'm feeling a bit chilly, I need to make the room warmer.</li><li>I want to set a relaxing mood for the evening, something soothing while I unwind.</li><li>It's the perfect setting for a quiet evening curled up with a book, and I need to enhance the atmosphere.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">621099039254971</td>
-                    <td class="img-col"><img src="images/13C7B5770B5053F2FF127ABDE44B6378_01_88.jpg" alt="13C7B5770B5053F2FF127ABDE44B6378_01_88.jpg"></td>
-                    <td class="cat-col">shelf</td>
-                    <td><ol><li>I need to find a place to organize my books and keep them within easy reach.</li><li>I want to arrange my favorite items in the room for display, making the space feel more personal and organized.</li><li>I'm looking to declutter my room by placing non-essential items out of the way but still accessible when needed.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">250920117201115</td>
-                    <td class="img-col"><img src="images/978298B15A687BDB41B6F411B75211A1_05_101.jpg" alt="978298B15A687BDB41B6F411B75211A1_05_101.jpg"></td>
-                    <td class="cat-col">drum</td>
-                    <td><ol><li>I feel like jammin' and need something to bring some rhythm into the mix.</li><li>I want to unwind and express some energy in the comfort of my living room.</li><li>I'm in the mood to create some beats and test out my latest musical ideas.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">777785540145877</td>
-                    <td class="img-col"><img src="images/7A4DFBACCB1D76AE54D0BAC77EBBD874_04_120.jpg" alt="7A4DFBACCB1D76AE54D0BAC77EBBD874_04_120.jpg"></td>
-                    <td class="cat-col">nectarine</td>
-                    <td><ol><li>I'm feeling a bit hungry and need a healthy snack to refuel.</li><li>I want something juicy and refreshing to enjoy on a warm day.</li><li>I'm putting together a quick fruit salad and need a sweet addition.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">1978511599000112</td>
-                    <td class="img-col"><img src="images/8F4684922AB142B7A7750C48A3265984_06_103.jpg" alt="8F4684922AB142B7A7750C48A3265984_06_103.jpg"></td>
-                    <td class="cat-col">food processor</td>
-                    <td><ol><li>I need to quickly prepare a large batch of vegetables for tonight's dinner.</li><li>I'm trying a new recipe that requires finely grinding nuts, and I need help with that.</li><li>I'm prepping ingredients to make a smoothie for my breakfast.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">572192714469234</td>
-                    <td class="img-col"><img src="images/315D374FF3A3BB36F4802A3E1B3D8CDB_02_73.jpg" alt="315D374FF3A3BB36F4802A3E1B3D8CDB_02_73.jpg"></td>
-                    <td class="cat-col">speaker</td>
-                    <td><ol><li>I want to play some music to make my gaming session more fun.</li><li>I need to create a more lively atmosphere while hanging out with friends.</li><li>I want to listen to my playlist without headphones for a change.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">364109948623642</td>
-                    <td class="img-col"><img src="images/7179CB33DBAAB11EE4B738B30F183770_03_16.jpg" alt="7179CB33DBAAB11EE4B738B30F183770_03_16.jpg"></td>
-                    <td class="cat-col">computer mouse</td>
-                    <td><ol><li>I'm about to have a virtual meeting and need something to navigate my presentations smoothly.</li><li>I want to finish editing my document, and using the touchpad isn't precise enough for detailed work.</li><li>I'm starting to feel discomfort with my trackpad and need something more ergonomic for a long working session.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">603232431419230</td>
-                    <td class="img-col"><img src="images/40EE810E6CEB7CF509C0B5FD2AEC8E11_10_87.jpg" alt="40EE810E6CEB7CF509C0B5FD2AEC8E11_10_87.jpg"></td>
-                    <td class="cat-col">sandal</td>
-                    <td><ol><li>I need to quickly slip into something comfortable to take the kids outside to play.</li><li>I can't walk on this cold floor with my bare feet, I need something easy to wear.</li><li>I just want something easy to wear while doing chores around the house.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">741752380121044</td>
-                    <td class="img-col"><img src="images/6F6725355E85B980B1A1F166F61D4399_04_113.jpg" alt="6F6725355E85B980B1A1F166F61D4399_04_113.jpg"></td>
-                    <td class="cat-col">remote control</td>
-                    <td><ol><li>I want to change the channel without getting up from the couch.</li><li>I'm planning to start watching the new episode that just aired.</li><li>I need to adjust the volume because it's too quiet in here.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">1921126271400640</td>
-                    <td class="img-col"><img src="images/A7D25B5F2D9FFB922F1EF8F80FF07AFA_02_21.jpg" alt="A7D25B5F2D9FFB922F1EF8F80FF07AFA_02_21.jpg"></td>
-                    <td class="cat-col">candle</td>
-                    <td><ol><li>I need to add a touch of warmth and coziness while I'm working late at my desk.</li><li>The room feels a bit stuffy; I want something to refresh the atmosphere and my mood.</li><li>I'm planning to unwind with a little relaxation music and want my space to feel more tranquil.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">3068977813372162</td>
-                    <td class="img-col"><img src="images/091012FECDF7DC0B58121019FC4E8F23_01_17.jpg" alt="091012FECDF7DC0B58121019FC4E8F23_01_17.jpg"></td>
-                    <td class="cat-col">light switch</td>
-                    <td><ol><li>I want to start working, so I need to brighten up this area.</li><li>The ambient lighting is too dim for reading papers; I need to illuminate the space better.</li><li>I'm about to join a virtual meeting and need to ensure my workspace is well-lit for a clear video call.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">726491885175991</td>
-                    <td class="img-col"><img src="images/FD7AF4F0A015C78F2623E06331B9A0EA_03_123.jpg" alt="FD7AF4F0A015C78F2623E06331B9A0EA_03_123.jpg"></td>
-                    <td class="cat-col">headphones</td>
-                    <td><ol><li>I want to immerse myself in some music without disturbing anyone else.</li><li>I need to jump on this virtual meeting and ensure there is no background noise.</li><li>I'm about to start a gaming session and want the full sound experience.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">361929942189177</td>
-                    <td class="img-col"><img src="images/E5332EE773F7F876E70CC414DEE8436E_08_97.jpg" alt="E5332EE773F7F876E70CC414DEE8436E_08_97.jpg"></td>
-                    <td class="cat-col">remote control</td>
-                    <td><ol><li>I want to switch to a different channel while I wait for my food to cook.</li><li>I need to turn up the volume on the TV to hear it better over the kitchen noises.</li><li>I'm ready to unwind with my favorite show while I'm taking a break from chores.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">699426878095281</td>
-                    <td class="img-col"><img src="images/3E26D07CC502D14F5BE3ED4A7763C520_04_81.jpg" alt="3E26D07CC502D14F5BE3ED4A7763C520_04_81.jpg"></td>
-                    <td class="cat-col">xbox</td>
-                    <td><ol><li>My friends are coming over for a game night, I need to set up for multiplayer.</li><li>The new release is out today, and I'm excited to dive into it for some leisure time.</li><li>I need to wind down after a long day with some virtual adventure.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">348150103987306</td>
-                    <td class="img-col"><img src="images/62BF4D298BB45A96CEE8C1592386A4A3_09_83.jpg" alt="62BF4D298BB45A96CEE8C1592386A4A3_09_83.jpg"></td>
-                    <td class="cat-col">handbag</td>
-                    <td><ol><li>I need to pack everything I might need for the day before heading out.</li><li>I'm getting ready to leave the house, so I need a convenient way to carry my essentials.</li><li>All my important items need a secure place for the commute, especially since I'm going to be out for a while.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">446618253818393</td>
-                    <td class="img-col"><img src="images/BA61683F54526DF7113C649E57B5A0BE_09_77.jpg" alt="BA61683F54526DF7113C649E57B5A0BE_09_77.jpg"></td>
-                    <td class="cat-col">mirror</td>
-                    <td><ol><li>I'm trying to enhance the educational experience for the children by demonstrating reflection and light in a fun way.</li><li>I want to introduce the kids to a simple science experiment about how light behaves.</li><li>The children are learning about countries and I need to encourage their curiosity with hands-on activities.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">357833243011172</td>
-                    <td class="img-col"><img src="images/0B33B9D60C67EDD3D227C4F86536A2DD_09_30.jpg" alt="0B33B9D60C67EDD3D227C4F86536A2DD_09_30.jpg"></td>
-                    <td class="cat-col">high heels</td>
-                    <td><ol><li>I need to find the perfect shoes to complement my outfit for the evening event.</li><li>I'm getting ready for dinner with friends downtown, and I want something stylish to wear.</li><li>I want to make sure my look matches the vibe of the upscale restaurant I'm heading to tonight.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">1412633792489426</td>
-                    <td class="img-col"><img src="images/CB801FDBD6D3C5E96A73BC807F98F88F_05_94.jpg" alt="CB801FDBD6D3C5E96A73BC807F98F88F_05_94.jpg"></td>
-                    <td class="cat-col">blender</td>
-                    <td><ol><li>I’m pondering making a smoothie for breakfast to kickstart my day with some nutrients.</li><li>I need to prepare a quick salsa to accompany tonight's dinner.</li><li>I want to puree vegetables quickly to make a soup for lunch.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">318145120280235</td>
-                    <td class="img-col"><img src="images/12ACD85DCDDF21D92D638611DE1C003E_03_74.jpg" alt="12ACD85DCDDF21D92D638611DE1C003E_03_74.jpg"></td>
-                    <td class="cat-col">pear</td>
-                    <td><ol><li>I'm looking for a fresh option to add to my lunch.</li><li>I want a healthy snack that's quick and satisfying before heading out.</li><li>I need something clean and refreshing after my workout.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">578803687205650</td>
-                    <td class="img-col"><img src="images/32D12CACE2C3E4D5F8456C0280925A1C_08_8.jpg" alt="32D12CACE2C3E4D5F8456C0280925A1C_08_8.jpg"></td>
-                    <td class="cat-col">kiwi</td>
-                    <td><ol><li>I'm feeling a bit peckish and need something light to snack on to wind down for the night.</li><li>I want to make a quick dish using a medley of fresh produce.</li><li>I am preparing a healthy shake and need something rich in vitamins to add in.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">937620320478229</td>
-                    <td class="img-col"><img src="images/FB0E48F6838E3FF3F2D02BDCEE7B6CCF_04_62.jpg" alt="FB0E48F6838E3FF3F2D02BDCEE7B6CCF_04_62.jpg"></td>
-                    <td class="cat-col">scissors</td>
-                    <td><ol><li>I need to make some decorations for my room and could use something to help me with the paper.</li><li>I want to prepare a gift wrap for a book I'm giving to my friend, but I need something to cut the wrapping paper neatly.</li><li>I'm planning to rearrange my books on the shelf, and I should remove the tags from some of them.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">364252588882158</td>
-                    <td class="img-col"><img src="images/B03C8F6404AC118818CD898898D513EF_04_9.jpg" alt="B03C8F6404AC118818CD898898D513EF_04_9.jpg"></td>
-                    <td class="cat-col">flying disc</td>
-                    <td><ol><li>I'm meeting friends for a game in the park and need to grab that item for the activity.</li><li>It's such a sunny day, I want to challenge my dog to a fun session outside.</li><li>I've got some free time and I am planning an energetic workout outdoors with friends.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">1135414320344014</td>
-                    <td class="img-col"><img src="images/2389E8741D5933AD88CDD6F272155BB7_10_130.jpg" alt="2389E8741D5933AD88CDD6F272155BB7_10_130.jpg"></td>
-                    <td class="cat-col">armchair</td>
-                    <td><ol><li>I need a comfortable spot to sit down and enjoy my book.</li><li>I want to relax for a bit and need a place to rest here.</li><li>I just need to sit and take a moment to plan my day.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">1198862383980403</td>
-                    <td class="img-col"><img src="images/61068B80F42FBBA914DE7342A5D929A7_03_88.jpg" alt="61068B80F42FBBA914DE7342A5D929A7_03_88.jpg"></td>
-                    <td class="cat-col">muffin</td>
-                    <td><ol><li>I'm in a rush this morning and need a quick treat before heading out.</li><li>I'm feeling a bit peckish after breakfast and want something small to satisfy my hunger.</li><li>I'm planning to have a friend over for tea and want to arrange a nice little snack assortment.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">463302348837770</td>
-                    <td class="img-col"><img src="images/B0C89825EA279873328EC35FB73129CA_06_0.jpg" alt="B0C89825EA279873328EC35FB73129CA_06_0.jpg"></td>
-                    <td class="cat-col">cupboard</td>
-                    <td><ol><li>I need to find the ingredients for lunch, it's time to start cooking.</li><li>I need to grab my cleaning supplies to tidy up the room.</li><li>I'm looking for some art supplies for my project, so I can get to work.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">367328728557103</td>
-                    <td class="img-col"><img src="images/DA326B4367732C0C22580C1D34511A60_08_21.jpg" alt="DA326B4367732C0C22580C1D34511A60_08_21.jpg"></td>
-                    <td class="cat-col">light bulb</td>
-                    <td><ol><li>It's getting late and I need to create a cozy lighting setup for winding down before bed.</li><li>I want to replace the old light source so the lamp can provide better illumination.</li><li>I am setting up the room and need to ensure proper lighting before using the lamp.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">970439357240906</td>
-                    <td class="img-col"><img src="images/131F9AEC88DB8646F4FBF787C4844A8D_09_19.jpg" alt="131F9AEC88DB8646F4FBF787C4844A8D_09_19.jpg"></td>
-                    <td class="cat-col">paper</td>
-                    <td><ol><li>I need to jot down notes from the lecture audio I just heard.</li><li>I want to brainstorm and outline ideas for my essay.</li><li>I need something to sketch a quick design concept.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">917395692275956</td>
-                    <td class="img-col"><img src="images/DBC756D9397DB2B42D95E0B205082188_05_28.jpg" alt="DBC756D9397DB2B42D95E0B205082188_05_28.jpg"></td>
-                    <td class="cat-col">filing cabinet</td>
-                    <td><ol><li>I need to find the contract documents for the meeting this afternoon.</li><li>I'm trying to organize my past project files to clear up my workspace.</li><li>I need to add the new report to my archived paperwork before I forget.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">1327239574420724</td>
-                    <td class="img-col"><img src="images/5AEE758656B8643194234ED1073FCA9F_04_41.jpg" alt="5AEE758656B8643194234ED1073FCA9F_04_41.jpg"></td>
-                    <td class="cat-col">bicycle</td>
-                    <td><ol><li>I want to get some exercise and fresh air despite the chilly weather.</li><li>I'm planning to visit a friend's house nearby and need a quick way to get there.</li><li>I'm looking to clear my mind with a peaceful ride through the neighborhood.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">906496220006482</td>
-                    <td class="img-col"><img src="images/D626E6CDB5D6DDD1A5F2A3BA0D640E44_09_32.jpg" alt="D626E6CDB5D6DDD1A5F2A3BA0D640E44_09_32.jpg"></td>
-                    <td class="cat-col">toaster</td>
-                    <td><ol><li>I need a quick solution for my breakfast since I’m running late.</li><li>I’m craving some warm bread to start my day off right.</li><li>I want to warm up my sandwich bread to give it a nice crispy texture.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">660186991796348</td>
-                    <td class="img-col"><img src="images/39342EA50B796E2DC62EA5B59EC42D87_02_111.jpg" alt="39342EA50B796E2DC62EA5B59EC42D87_02_111.jpg"></td>
-                    <td class="cat-col">tennis racket</td>
-                    <td><ol><li>I need to get a workout in today, and heading to the courts will be perfect.</li><li>There's a practice session scheduled with my coach, and I need the gear to join.</li><li>I'm excited to have some fun on the court with my friends, so I need my equipment to be ready.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">687733975730774</td>
-                    <td class="img-col"><img src="images/5002E478D0C8A5AAECA6EC9718BAED3C_07_58.jpg" alt="5002E478D0C8A5AAECA6EC9718BAED3C_07_58.jpg"></td>
-                    <td class="cat-col">earrings</td>
-                    <td><ol><li>I'm getting ready for a dinner with friends and want something to complement my outfit.</li><li>I feel like adding a touch of elegance to my look for the upcoming party.</li><li>I'm meeting someone special and want to make a good impression with my appearance.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">3140854019528373</td>
-                    <td class="img-col"><img src="images/EC24FC88DC0B384C072A6A8CE83FA787_01_49.jpg" alt="EC24FC88DC0B384C072A6A8CE83FA787_01_49.jpg"></td>
-                    <td class="cat-col">kettle</td>
-                    <td><ol><li>I'm feeling a bit cold, and I want to warm up with a hot cup of tea.</li><li>I need to prepare a quick breakfast, and boiling some water for oatmeal will save time.</li><li>It's time for my afternoon break, and I could use something soothing to sip on.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">337391101640748</td>
-                    <td class="img-col"><img src="images/5ACE63C28B5621980694D971966ACD59_09_43.jpg" alt="5ACE63C28B5621980694D971966ACD59_09_43.jpg"></td>
-                    <td class="cat-col">laptop</td>
-                    <td><ol><li>I need to send out some urgent emails before heading out to complete other tasks.</li><li>It's time to catch up on my favorite series while I wind down for the evening.</li><li>I need to finalize my trip itinerary and book accommodations before prices change.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">1026110288253308</td>
-                    <td class="img-col"><img src="images/B5F0A2BDEBDE598CD51F04985C99F964_08_5.jpg" alt="B5F0A2BDEBDE598CD51F04985C99F964_08_5.jpg"></td>
-                    <td class="cat-col">wallet</td>
-                    <td><ol><li>I need to pay my bills, and I should grab what I use to keep my cards and money.</li><li>I'm heading out for errands, I should take along my personal belonging where I store cash.</li><li>I'm planning a trip soon, and I need to make sure my identification is secure and easily accessible.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">374779174464988</td>
-                    <td class="img-col"><img src="images/C336F18031380F0A81054C3939B4D31F_02_80.jpg" alt="C336F18031380F0A81054C3939B4D31F_02_80.jpg"></td>
-                    <td class="cat-col">spoon</td>
-                    <td><ol><li>I want to stir the coffee in my mug so it tastes right.</li><li>I'm about to enjoy my yogurt, and I need something to scoop it with.</li><li>It's time to serve my cereal, and I require a way to eat it properly.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">3023218251265319</td>
-                    <td class="img-col"><img src="images/5749AB7919BDB9A085326E1D236A3A7D_09_92.jpg" alt="5749AB7919BDB9A085326E1D236A3A7D_09_92.jpg"></td>
-                    <td class="cat-col">boot</td>
-                    <td><ol><li>I need something sturdy to protect my feet outdoors today.</li><li>It's wet and muddy outside, I need something appropriate for rough terrain.</li><li>I'm heading out for a walk and I need to wear something that covers my legs.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">367329954859869</td>
-                    <td class="img-col"><img src="images/7B030EFDA9234B84C8852D601707A10F_08_72.jpg" alt="7B030EFDA9234B84C8852D601707A10F_08_72.jpg"></td>
-                    <td class="cat-col">teapot</td>
-                    <td><ol><li>I want to make a warm drink to help me unwind after a long day.</li><li>I'm preparing to have a cozy afternoon tea session with my friends.</li><li>I need something to help soothe my throat, a homemade infusion would be perfect.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">528259001830357</td>
-                    <td class="img-col"><img src="images/1BEE2147FD9943A5B60DBCB63D090BD2_02_92.jpg" alt="1BEE2147FD9943A5B60DBCB63D090BD2_02_92.jpg"></td>
-                    <td class="cat-col">yoga mat</td>
-                    <td><ol><li>I want to do some stretching exercises to relax before heading out.</li><li>I need a spot to comfortably lie down for post-workout meditation.</li><li>I'm preparing for a home workout session and need a designated space.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">3299701766908514</td>
-                    <td class="img-col"><img src="images/2D768F2B0200923186151A140739816C_08_9.jpg" alt="2D768F2B0200923186151A140739816C_08_9.jpg"></td>
-                    <td class="cat-col">mirror</td>
-                    <td><ol><li>I need to make sure my outfit is suitable before heading out for the evening.</li><li>I want to check if my face and hair are in order since I've got an important video call soon.</li><li>I need to ensure everything is in place as I prepare myself for an upcoming interview.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">487492359602420</td>
-                    <td class="img-col"><img src="images/08927FD18D6475238230A759D428917E_04_31.jpg" alt="08927FD18D6475238230A759D428917E_04_31.jpg"></td>
-                    <td class="cat-col">tennis ball</td>
-                    <td><ol><li>I plan to go for a quick matching session with my friends and need to pack my gear.</li><li>My dog needs some exercise, and I want to take him outside for a playful game.</li><li>I am teaching my kid how to coordinate sports, and we need something for practice drills to start.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">4702708083175388</td>
-                    <td class="img-col"><img src="images/BE72E7267A323A1089F393E471B4ECCC_04_63.jpg" alt="BE72E7267A323A1089F393E471B4ECCC_04_63.jpg"></td>
-                    <td class="cat-col">spatula</td>
-                    <td><ol><li>I'm planning to make some pancakes and I need to get my ingredients mixed and ready.</li><li>I just grilled some sandwiches and need to flip them over without making a mess.</li><li>It's time to prepare a quick stir-fry and I need to get my vegetables cooked evenly.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">1094083898093627</td>
-                    <td class="img-col"><img src="images/BE4B7E0941A0449167B5E728D0CD6F57_08_23.jpg" alt="BE4B7E0941A0449167B5E728D0CD6F57_08_23.jpg"></td>
-                    <td class="cat-col">goggles</td>
-                    <td><ol><li>I need to protect my eyes while swimming, especially in bright sunlight.</li><li>I want to enjoy a clear view underwater during my swim session.</li><li>I'd like to ensure my vision isn't hindered by water splashes as I play in the pool.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">1035606343657101</td>
-                    <td class="img-col"><img src="images/B3FAB41372EB0ADC3124BF2BB1615960_04_32.jpg" alt="B3FAB41372EB0ADC3124BF2BB1615960_04_32.jpg"></td>
-                    <td class="cat-col">hair dryer</td>
-                    <td><ol><li>I just showered and need to get my hair dry quickly before heading out.</li><li>I want to shape my hairstyle more effectively for a party tonight.</li><li>I need a tool to help me freshen up and add volume to my hair.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">978415566407255</td>
-                    <td class="img-col"><img src="images/D14B15F37218BDCF4F8BF4937BAE2186_03_93.jpg" alt="D14B15F37218BDCF4F8BF4937BAE2186_03_93.jpg"></td>
-                    <td class="cat-col">high heels</td>
-                    <td><ol><li>I need to get ready for the gala tonight and complete my ensemble.</li><li>I have an important dinner date, and I want to look my best.</li><li>I am about to attend a business event and need to project a professional image.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">456718406178986</td>
-                    <td class="img-col"><img src="images/D3976969236659E688BB418F2D53EADD_01_3.jpg" alt="D3976969236659E688BB418F2D53EADD_01_3.jpg"></td>
-                    <td class="cat-col">banana</td>
-                    <td><ol><li>I'm feeling a bit hungry but don't want a heavy meal, just something healthy to quickly boost my energy.</li><li>I'm planning to make a smoothie and need something to add sweetness and creaminess.</li><li>It's almost time for my workout and I need a quick, natural snack to fuel me up.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">245112591154152</td>
-                    <td class="img-col"><img src="images/EF3E1C56BD16B9F445EB39BCA93AC832_06_106.jpg" alt="EF3E1C56BD16B9F445EB39BCA93AC832_06_106.jpg"></td>
-                    <td class="cat-col">sneakers</td>
-                    <td><ol><li>I'm taking my little one to the playground, so I need to get them ready with appropriate footwear.</li><li>We're about to head out for a family walk, and it's time to ensure the kids have suitable shoes on.</li><li>It's a bit chilly on the floor, and I want to make sure the kids have something comfortable on their feet inside.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">632121528078336</td>
-                    <td class="img-col"><img src="images/95AA13ED340C1340AB77BE787ED9618E_10_109.jpg" alt="95AA13ED340C1340AB77BE787ED9618E_10_109.jpg"></td>
-                    <td class="cat-col">suitcase</td>
-                    <td><ol><li>I need to gather some things for my trip tomorrow and get them stored securely.</li><li>I'm planning to move some stuff to my new place and need to pack them efficiently.</li><li>It's time to put away some seasonal clothes to make space in my closet.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">377706927458738</td>
-                    <td class="img-col"><img src="images/C5C5D4CDA9C61BEBF06AFFE0D872C7A9_10_101.jpg" alt="C5C5D4CDA9C61BEBF06AFFE0D872C7A9_10_101.jpg"></td>
-                    <td class="cat-col">door handle</td>
-                    <td><ol><li>I need to leave this room and head outside.</li><li>My friend is waiting on the other side, and I should join them.</li><li>I need to check if I locked the door properly before heading to bed.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">1128617754598652</td>
-                    <td class="img-col"><img src="images/EF36BADB6F22866020CF8A1C521FF41B_01_93.jpg" alt="EF36BADB6F22866020CF8A1C521FF41B_01_93.jpg"></td>
-                    <td class="cat-col">chest of drawers</td>
-                    <td><ol><li>I'm trying to find my sweater because it's getting chilly.</li><li>I need to organize my accessories and socks, they're all over the place.</li><li>I'm packing for a trip and need to collect my clothes.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">438179588336596</td>
-                    <td class="img-col"><img src="images/002A3C7C0EBB7191A7B312712D3FD527_06_119.jpg" alt="002A3C7C0EBB7191A7B312712D3FD527_06_119.jpg"></td>
-                    <td class="cat-col">detergent</td>
-                    <td><ol><li>I just finished eating and the plates need to be cleaned.</li><li>There's a sticky spill on the table that needs to be taken care of.</li><li>I need to wash my hands properly after handling some oily food.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">912600695940732</td>
-                    <td class="img-col"><img src="images/621E52F32D69A0F03BEAD686F37CEB98_08_71.jpg" alt="621E52F32D69A0F03BEAD686F37CEB98_08_71.jpg"></td>
-                    <td class="cat-col">washing machine</td>
-                    <td><ol><li>I've got a pile of dirty clothes that I need to clean before the weekend.</li><li>I accidentally spilled some coffee on my shirt earlier today, and I need to get it cleaned.</li><li>I need to freshen up my gym clothes before heading to the workout session tomorrow.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">757435585683382</td>
-                    <td class="img-col"><img src="images/3A955398EE693DFC0101F5879C1B41D8_02_102.jpg" alt="3A955398EE693DFC0101F5879C1B41D8_02_102.jpg"></td>
-                    <td class="cat-col">dice</td>
-                    <td><ol><li>I want to throw these to see who goes first in our board game session.</li><li>I'm feeling lucky tonight, let's get some friendly competition going.</li><li>It's time to settle our decision the fun way with a quick roll.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">1199105927285697</td>
-                    <td class="img-col"><img src="images/F6C7E92952698D1EB1E9ECCB9E70997A_10_37.jpg" alt="F6C7E92952698D1EB1E9ECCB9E70997A_10_37.jpg"></td>
-                    <td class="cat-col">bathroom cabinet</td>
-                    <td><ol><li>I need to grab something to clean and tidy up this bathroom quickly.</li><li>I forgot where I put my skincare products this morning, and I need them to finish my routine.</li><li>I need to find a remedy for my headache before starting my morning activities.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">426579882603205</td>
-                    <td class="img-col"><img src="images/14206D7041BEE38045C9BECC0C78BED9_06_99.jpg" alt="14206D7041BEE38045C9BECC0C78BED9_06_99.jpg"></td>
-                    <td class="cat-col">house/car key</td>
-                    <td><ol><li>I need to lock up the house before heading out for the day.</li><li>It's time to leave for work, and I don't want to be late.</li><li>I promised to pick up groceries on the way home, so I better get going.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">375095641126554</td>
-                    <td class="img-col"><img src="images/345D0E2A33B6BF551604ED84C77AF39B_08_23.jpg" alt="345D0E2A33B6BF551604ED84C77AF39B_08_23.jpg"></td>
-                    <td class="cat-col">camera</td>
-                    <td><ol><li>I want to capture some aesthetic shots of my new room arrangement to share online.</li><li>I'm preparing to make a portfolio of my interior design work, and this room needs to be documented as part of it.</li><li>I have a passion for photography and this setup seems perfect for testing out some low-light shots.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">461376635636097</td>
-                    <td class="img-col"><img src="images/E0F80C8C52A1CCF14D148E357AF576EB_10_66.jpg" alt="E0F80C8C52A1CCF14D148E357AF576EB_10_66.jpg"></td>
-                    <td class="cat-col">soccer ball</td>
-                    <td><ol><li>I'm heading to the park and plan to meet friends for a game.</li><li>I want to practice some kicking skills to improve my technique for the upcoming match this weekend.</li><li>There's a pick-up game starting soon, and I don't want to show up empty-handed.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">669578471135887</td>
-                    <td class="img-col"><img src="images/E6FC3295A1B75E4AB7B4C5DDF51389BE_08_28.jpg" alt="E6FC3295A1B75E4AB7B4C5DDF51389BE_08_28.jpg"></td>
-                    <td class="cat-col">light bulb</td>
-                    <td><ol><li>I need to change the broken illumination in the living room.</li><li>I am trying to replace the outdated fixtures in my reading area.</li><li>I'm about to host people, and I need to ensure the dining space is well-lit.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">1198562477344751</td>
-                    <td class="img-col"><img src="images/FF88A7C6D053A261443018AB9B453874_02_19.jpg" alt="FF88A7C6D053A261443018AB9B453874_02_19.jpg"></td>
-                    <td class="cat-col">wrench</td>
-                    <td><ol><li>I need to tighten the bolts on this drone to make sure it's ready for testing.</li><li>I want to adjust the size of a fitting for this project to ensure everything fits perfectly.</li><li>I need to remove a stubborn component from the assembly to replace it with a new one.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">657425178733580</td>
-                    <td class="img-col"><img src="images/6F8B50E7857621AF26027CCDBAB8FBB7_05_20.jpg" alt="6F8B50E7857621AF26027CCDBAB8FBB7_05_20.jpg"></td>
-                    <td class="cat-col">computer monitor</td>
-                    <td><ol><li>I need to review the latest updates on that report before the meeting starts.</li><li>I want to check our project timeline to ensure we're on track for the deadline.</li><li>I have to respond to some emails that came in about the new campaign.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">671308510727325</td>
-                    <td class="img-col"><img src="images/5704B5829725AB6FEAAD0C959AA59D06_03_90.jpg" alt="5704B5829725AB6FEAAD0C959AA59D06_03_90.jpg"></td>
-                    <td class="cat-col">door handle</td>
-                    <td><ol><li>I need to complete my bedtime checklist and get some rest.</li><li>I want to leave the room to check if I finished all my evening chores.</li><li>It's time to join everyone in the living room for some evening family time.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">936944970520466</td>
-                    <td class="img-col"><img src="images/3DAB215803C21DFF410278DEEAC3AFD0_01_30.jpg" alt="3DAB215803C21DFF410278DEEAC3AFD0_01_30.jpg"></td>
-                    <td class="cat-col">cabinetry</td>
-                    <td><ol><li>I'm trying to organize the kitchen and need a spot to store some of the less-used appliances to free up counter space.</li><li>I'm preparing a meal and looking for a place where I might have put my baking supplies last time.</li><li>I need to clean up and declutter the kitchen area to make it safer for the kids to play around.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">4777467832371143</td>
-                    <td class="img-col"><img src="images/525BD9B3359E657595E0674F2C4EC6E4_08_7.jpg" alt="525BD9B3359E657595E0674F2C4EC6E4_08_7.jpg"></td>
-                    <td class="cat-col">coat</td>
-                    <td><ol><li>I need to head out soon and it's quite chilly, so I need to find something warm to wear.</li><li>I'm meeting friends outside today, and I want to be prepared for the changing weather.</li><li>I want to make sure I’m dressed appropriately for a professional meeting in cooler conditions.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">679947883439743</td>
-                    <td class="img-col"><img src="images/D3CEC2D6FFE7F40397E8BCD07A22875F_04_91.jpg" alt="D3CEC2D6FFE7F40397E8BCD07A22875F_04_91.jpg"></td>
-                    <td class="cat-col">muffin</td>
-                    <td><ol><li>I'm ready to enjoy a delightful snack with my coffee while I continue reading this book.</li><li>I need something to nibble on as I settle in for a movie marathon on the couch.</li><li>It's time for a quick afternoon break and I want to treat myself to something sweet with my tea.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">464928148616690</td>
-                    <td class="img-col"><img src="images/C7510EB619634877401B454098A5C9BD_09_106.jpg" alt="C7510EB619634877401B454098A5C9BD_09_106.jpg"></td>
-                    <td class="cat-col">glass jar</td>
-                    <td><ol><li>I need to find something to store my homemade jam before it spoils.</li><li>I'm trying to organize my pantry and need a place to keep the spices fresh and easily accessible.</li><li>I’m planning to make a salad dressing and need a container to mix and store it for later use.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">631987481436106</td>
-                    <td class="img-col"><img src="images/5EB62976279A218A0363DDD69AD6D8B0_06_67.jpg" alt="5EB62976279A218A0363DDD69AD6D8B0_06_67.jpg"></td>
-                    <td class="cat-col">box of macaroni & cheese</td>
-                    <td><ol><li>I need to make a quick meal for my kids before they get too hungry.</li><li>I want to prepare something simple and comforting while catching up on my favorite show.</li><li>I'm feeling exhausted and crave a convenient meal option that doesn't require much effort.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">654520909004735</td>
-                    <td class="img-col"><img src="images/76873E849162CC81213DCFE12214C052_06_1.jpg" alt="76873E849162CC81213DCFE12214C052_06_1.jpg"></td>
-                    <td class="cat-col">filing cabinet</td>
-                    <td><ol><li>I need to find the paperwork for the meeting later, it should be stored around here.</li><li>I have to organize the reports for the audit, so they are easily accessible.</li><li>Where can I check for the project files that were sent last week?</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">3504480916454707</td>
-                    <td class="img-col"><img src="images/A3E47D263861F841331EEE8F767B92C3_10_117.jpg" alt="A3E47D263861F841331EEE8F767B92C3_10_117.jpg"></td>
-                    <td class="cat-col">banana</td>
-                    <td><ol><li>I need a quick snack to recharge before heading out.</li><li>I'm prepping ingredients for a smoothie later on.</li><li>I'm putting together breakfast and need something to top my cereal.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">243034257988756</td>
-                    <td class="img-col"><img src="images/DAB30326A3BC494B4E05BFA9E80B75D4_10_53.jpg" alt="DAB30326A3BC494B4E05BFA9E80B75D4_10_53.jpg"></td>
-                    <td class="cat-col">football</td>
-                    <td><ol><li>I need to practice my skills before the big game this weekend.</li><li>I want to enjoy a friendly match with friends at the local field to relax and have fun.</li><li>I need to get some exercise after a long day, and this is my favorite way to do it.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">278602211045383</td>
-                    <td class="img-col"><img src="images/346162883947989D10C8CE11EA6728C6_02_65.jpg" alt="346162883947989D10C8CE11EA6728C6_02_65.jpg"></td>
-                    <td class="cat-col">drawer</td>
-                    <td><ol><li>I need to find a place to organize these scattered items and keep things tidy.</li><li>It's important to put away my belongings that's been left out in the open for safety and organization.</li><li>I need to store personal items securely so they don't get lost or damaged.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">926549841377627</td>
-                    <td class="img-col"><img src="images/53721C23AC6CBACA1526616B525A58C0_08_3.jpg" alt="53721C23AC6CBACA1526616B525A58C0_08_3.jpg"></td>
-                    <td class="cat-col">sunglasses</td>
-                    <td><ol><li>I want to protect my eyes from the bright sunlight outside while walking.</li><li>I'm heading out for a drive and need something to reduce the glare from the sun.</li><li>I plan to relax in the garden and require something to shield my eyes from the harsh light.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">275367327996662</td>
-                    <td class="img-col"><img src="images/6A0626D20F1F2F8955A5BF368056F8C4_09_59.jpg" alt="6A0626D20F1F2F8955A5BF368056F8C4_09_59.jpg"></td>
-                    <td class="cat-col">computer keyboard</td>
-                    <td><ol><li>I need to type up my notes from today’s meeting.</li><li>I need to finish my draft for the report that’s due tomorrow.</li><li>I want to respond to a few emails quickly before heading out.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">4851225514946744</td>
-                    <td class="img-col"><img src="images/9985216EA42C1161319FF2178A85405E_07_46.jpg" alt="9985216EA42C1161319FF2178A85405E_07_46.jpg"></td>
-                    <td class="cat-col">pear</td>
-                    <td><ol><li>I want to make a fresh fruit salad for a delightful afternoon snack.</li><li>I need a quick healthy option for breakfast before heading into my busy day.</li><li>I am preparing ingredients for a smoothie to enjoy as a refreshing drink.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">486121399894767</td>
-                    <td class="img-col"><img src="images/94C9E910664D442972763B5B4E1EBDD0_04_111.jpg" alt="94C9E910664D442972763B5B4E1EBDD0_04_111.jpg"></td>
-                    <td class="cat-col">vase</td>
-                    <td><ol><li>I want to make the room feel more welcoming for my guests this evening.</li><li>I am trying to brighten up the living room with some fresh touches and decorations.</li><li>I'm looking for something to add a pop of color to my entertainment area.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">1364119054024042</td>
-                    <td class="img-col"><img src="images/043CFF0CB8026649C6F3B54C86CE2ACF_05_122.jpg" alt="043CFF0CB8026649C6F3B54C86CE2ACF_05_122.jpg"></td>
-                    <td class="cat-col">computer keyboard</td>
-                    <td><ol><li>I need to respond to emails and manage my tasks for the day.</li><li>I want to play some online games to relax after a long day.</li><li>I need to finish my assignment, and typing out my thoughts is crucial right now.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">493626655622605</td>
-                    <td class="img-col"><img src="images/5E6591E3D72EC38220B440EC4B26C6B1_05_23.jpg" alt="5E6591E3D72EC38220B440EC4B26C6B1_05_23.jpg"></td>
-                    <td class="cat-col">spoon</td>
-                    <td><ol><li>I'm about to have some yogurt and need something to help me eat it.</li><li>This soup smells delicious but it's too hot to drink directly, I need something to enjoy it properly.</li><li>My cereal is getting soggy, I need to start eating it before it becomes mush.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">995680121386218</td>
-                    <td class="img-col"><img src="images/1EEDB104A07BAEFCC8988152787F7912_09_72.jpg" alt="1EEDB104A07BAEFCC8988152787F7912_09_72.jpg"></td>
-                    <td class="cat-col">game controller/pad</td>
-                    <td><ol><li>I need to unwind after a stressful day, maybe I'll dive into my favorite virtual adventure.</li><li>I'm meeting friends online for a competitive match, got to get ready for it.</li><li>I promised my sibling a gaming session, it's time to keep that promise.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">2147234495428341</td>
-                    <td class="img-col"><img src="images/049E2447197F7D9D69F85F6C4F83184C_04_13.jpg" alt="049E2447197F7D9D69F85F6C4F83184C_04_13.jpg"></td>
-                    <td class="cat-col">jug</td>
-                    <td><ol><li>I need to add water to the pot on the stove to start cooking pasta.</li><li>I should pour some water into a glass to have a drink while cooking.</li><li>I want to fill the kettle with water for making tea.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">656707855626660</td>
-                    <td class="img-col"><img src="images/F3981B5906F9E133DCA2B5A305DCFEBF_06_2.jpg" alt="F3981B5906F9E133DCA2B5A305DCFEBF_06_2.jpg"></td>
-                    <td class="cat-col">baseball glove</td>
-                    <td><ol><li>I'm getting ready for a game and need to pick up something to help catch the ball.</li><li>I'm about to head out to the park for practice and need something that's essential for fielding.</li><li>I promised to play catch with my friend, and I need something to make catching easier.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">318627716986008</td>
-                    <td class="img-col"><img src="images/B7E00A7CDABE30C1C6C33E8A963E5C74_10_90.jpg" alt="B7E00A7CDABE30C1C6C33E8A963E5C74_10_90.jpg"></td>
-                    <td class="cat-col">boot</td>
-                    <td><ol><li>I'm heading out on a hike and need something sturdy to protect my feet.</li><li>I need to tidy up this room and organize my footwear collection.</li><li>I have a job interview, and I'm looking for something suitable to wear with my outfit.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">470756184520816</td>
-                    <td class="img-col"><img src="images/0BE636006EBA51E67C3968CD09B0943F_09_2.jpg" alt="0BE636006EBA51E67C3968CD09B0943F_09_2.jpg"></td>
-                    <td class="cat-col">suit</td>
-                    <td><ol><li>I have an important interview or meeting today, and I want to make a good impression.</li><li>I'm getting ready for a formal event this evening and need to look my best.</li><li>I need to quickly change into something appropriate before heading out for a special dinner.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">495891571892464</td>
-                    <td class="img-col"><img src="images/A389C5E12F39045C8B3F3748F37B615E_02_43.jpg" alt="A389C5E12F39045C8B3F3748F37B615E_02_43.jpg"></td>
-                    <td class="cat-col">boot</td>
-                    <td><ol><li>I plan to go on a hike today and need footwear suitable for rugged terrain.</li><li>It's chilly outside, and my feet need something durable to keep them warm.</li><li>I'm heading out into the rain, so I need sturdy footwear that won't let water seep through.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">506039184189386</td>
-                    <td class="img-col"><img src="images/5D32CF77F0048BE3F803A82F53243AF0_06_72.jpg" alt="5D32CF77F0048BE3F803A82F53243AF0_06_72.jpg"></td>
-                    <td class="cat-col">cutting board</td>
-                    <td><ol><li>I need a space to prepare ingredients for tonight’s dinner quickly.</li><li>I want to keep the counters clean while I prepare the veggies.</li><li>I'm planning to cook and need an appropriate area to handle the herbs safely.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">275438951389317</td>
-                    <td class="img-col"><img src="images/7763B58C79603E623A58AB0F53FA8352_08_46.jpg" alt="7763B58C79603E623A58AB0F53FA8352_08_46.jpg"></td>
-                    <td class="cat-col">closet</td>
-                    <td><ol><li>I need to find my pajamas so that I can get ready for bed.</li><li>I want to grab a jacket before heading outside since it might be chilly.</li><li>I need to organize my clothes because things have become a bit messy in here.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">3012116202372773</td>
-                    <td class="img-col"><img src="images/16B58A9663CC093318EEC3B5AE67DEAE_08_0.jpg" alt="16B58A9663CC093318EEC3B5AE67DEAE_08_0.jpg"></td>
-                    <td class="cat-col">door handle</td>
-                    <td><ol><li>I forgot my keys and can't get in, I need to figure out how to gain access.</li><li>The room is getting stuffy, I need to open the way to let some fresh air in.</li><li>I can hear them calling me from outside, I need to go and see what they want.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">1769834156555715</td>
-                    <td class="img-col"><img src="images/EF6613472BD326FE6A414656865A471C_03_75.jpg" alt="EF6613472BD326FE6A414656865A471C_03_75.jpg"></td>
-                    <td class="cat-col">toaster</td>
-                    <td><ol><li>I want to have some warm bread for breakfast to start my day off right.</li><li>I'm feeling hungry and need something quick to prepare before heading out.</li><li>I need a quick snack to hold me over until lunchtime.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">713266986330765</td>
-                    <td class="img-col"><img src="images/AEB36F8E3EBC6E1E48725256E13932D8_09_34.jpg" alt="AEB36F8E3EBC6E1E48725256E13932D8_09_34.jpg"></td>
-                    <td class="cat-col">hair dryer</td>
-                    <td><ol><li>I'm getting ready for a big event and need my hair to look perfect.</li><li>I just showered and need to dry my hair quickly before heading out.</li><li>I want to style my hair with some volume for the day.</li></ol></td>
-                </tr>
-        
-                <tr>
-                    <td class="id-col">689846749053672</td>
-                    <td class="img-col"><img src="images/A1C09061081BB6FF8BB1C92FA68001C7_08_60.jpg" alt="A1C09061081BB6FF8BB1C92FA68001C7_08_60.jpg"></td>
-                    <td class="cat-col">lamp</td>
-                    <td><ol><li>It's getting dark, and I want to read my book before sleeping.</li><li>I feel like unwinding with some light music and need to set the right mood.</li><li>I need to find something on my nightstand and require some light to see clearly.</li></ol></td>
-                </tr>
-        
-            </tbody>
-        </table>
-    </body>
-    </html>
-    
