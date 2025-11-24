@@ -219,29 +219,39 @@
         <div class="controls">
             <div class="control-row">
                 <div class="control-group">
-                    <label for="itemSelect">📋 Select Image by ID or Category:</label>
-                    <select id="itemSelect" size="8" multiple style="height: 200px;">
-                        <option value="">Loading...</option>
-                    </select>
-                    <small style="color: #666; margin-top: 5px; display: block;">
-                        💡 Tip: Hold Ctrl/Cmd to select multiple items
-                    </small>
-                </div>
-                
-                <div class="control-group">
-                    <label for="categoryFilter">🏷️ Filter by Category:</label>
+                    <label for="categoryFilter">🏷️ Step 1: Filter by Category (Optional):</label>
                     <select id="categoryFilter">
                         <option value="">All Categories</option>
                     </select>
-                    
-                    <label for="searchInput" style="margin-top: 15px;">🔍 Search:</label>
-                    <input type="text" id="searchInput" placeholder="Search by ID or keyword...">
+                </div>
+                
+                <div class="control-group">
+                    <label for="searchInput">🔍 Step 2: Search Keywords (Optional):</label>
+                    <input type="text" id="searchInput" placeholder="Search by ID, category, or intention...">
                 </div>
             </div>
             
-            <div class="control-row" style="justify-content: flex-start;">
-                <button class="btn btn-primary" onclick="showSelected()">🖼️ Show Selected Items</button>
-                <button class="btn btn-secondary" onclick="clearSelection()">🔄 Clear Selection</button>
+            <div class="control-row">
+                <div class="control-group">
+                    <label for="itemSelect">📋 Step 3: Select Items to View:</label>
+                    <select id="itemSelect" multiple style="height: 250px; font-family: monospace; font-size: 13px;">
+                        <option value="">Loading...</option>
+                    </select>
+                    <small style="color: #666; margin-top: 8px; display: block;">
+                        💡 Hold <kbd>Ctrl</kbd> (Windows) or <kbd>Cmd</kbd> (Mac) to select multiple items, or <kbd>Shift</kbd> for range selection
+                    </small>
+                </div>
+            </div>
+            
+            <div class="control-row" style="justify-content: space-between;">
+                <div>
+                    <button class="btn btn-primary" onclick="showSelected()">🖼️ Show Selected Items</button>
+                    <button class="btn btn-secondary" onclick="clearSelection()">🔄 Clear All</button>
+                    <button class="btn btn-secondary" onclick="selectAllVisible()">✅ Select All Visible</button>
+                </div>
+                <span style="color: #666; font-size: 14px;">
+                    Showing <strong id="visibleCount">0</strong> of <strong id="totalCount2">100</strong> items
+                </span>
             </div>
         </div>
         
@@ -285,12 +295,22 @@
             const select = document.getElementById('itemSelect');
             select.innerHTML = '';
             
+            if (Object.keys(filteredData).length === 0) {
+                select.innerHTML = '<option value="">No items found</option>';
+                document.getElementById('visibleCount').textContent = '0';
+                return;
+            }
+            
             Object.entries(filteredData).forEach(([imageId, item]) => {
                 const option = document.createElement('option');
                 option.value = imageId;
-                option.textContent = `${imageId.substring(0, 8)}... | ${item.target_category} | ${item.image_file}`;
+                // Format: ID (first 12 chars) | Category | Filename
+                const shortId = imageId.substring(0, 12);
+                option.textContent = `[${shortId}...] ${item.target_category.padEnd(20)} | ${item.image_file}`;
                 select.appendChild(option);
             });
+            
+            document.getElementById('visibleCount').textContent = Object.keys(filteredData).length;
             
             // Update selected count on change
             select.addEventListener('change', updateSelectedCount);
@@ -344,8 +364,18 @@
         }
         
         function updateStats() {
-            document.getElementById('totalCount').textContent = Object.keys(allData).length;
+            const totalItems = Object.keys(allData).length;
+            document.getElementById('totalCount').textContent = totalItems;
+            document.getElementById('totalCount2').textContent = totalItems;
             document.getElementById('selectedCount').textContent = document.getElementById('itemSelect').selectedOptions.length;
+        }
+        
+        function selectAllVisible() {
+            const select = document.getElementById('itemSelect');
+            for (let option of select.options) {
+                option.selected = true;
+            }
+            updateSelectedCount();
         }
         
         function showSelected() {
@@ -423,3 +453,4 @@
     </script>
 </body>
 </html>
+
