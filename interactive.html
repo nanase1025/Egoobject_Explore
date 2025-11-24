@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EgoObjects Intention Annotations - Interactive View</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            opacity: 0.9;
+        }
+        
+        .controls {
+            padding: 20px 30px;
+            background: #fafafa;
+            border-bottom: 2px solid #e0e0e0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5568d3;
+        }
+        
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #d0d0d0;
+        }
+        
+        .stats {
+            padding: 15px 30px;
+            background: #fff3cd;
+            border-bottom: 1px solid #ffc107;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .item-list {
+            padding: 20px 30px;
+            max-height: calc(100vh - 400px);
+            overflow-y: auto;
+        }
+        
+        .item {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .item:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+        
+        .item.selected {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        
+        .item-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .item-id {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 12px;
+            font-family: monospace;
+        }
+        
+        .category-badge {
+            background: #4caf50;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .item-content {
+            padding-left: 35px;
+        }
+        
+        .image-filename {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+        
+        .detail-view {
+            padding: 30px;
+            border-top: 2px solid #e0e0e0;
+            display: none;
+        }
+        
+        .detail-view.active {
+            display: block;
+        }
+        
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .detail-image {
+            text-align: center;
+        }
+        
+        .detail-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .detail-info h3 {
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .info-item {
+            margin-bottom: 20px;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .intentions-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .intentions-list li {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 EgoObjects Intention Annotations</h1>
+            <p>Interactive Explorer - Click to view details and load images on demand</p>
+        </header>
+        
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search by Image ID, Category, or Intention...">
+            </div>
+            <div class="filter-group">
+                <button class="btn btn-primary" onclick="selectAll()">Select All</button>
+                <button class="btn btn-secondary" onclick="deselectAll()">Deselect All</button>
+                <button class="btn btn-primary" onclick="showSelected()">Show Selected (0)</button>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <span>Total: <strong id="totalCount">0</strong> items</span>
+            <span>Filtered: <strong id="filteredCount">0</strong> items</span>
+        </div>
+        
+        <div class="item-list" id="itemList"></div>
+        
+        <div class="detail-view" id="detailView">
+            <h2>Selected Items Details</h2>
+            <div id="detailContent"></div>
+        </div>
+    </div>
+    
+    <script>
+        let data = {};
+        let selectedItems = new Set();
+        
+        // Load JSON data
+        fetch('intentions.json')
+            .then(response => response.json())
+            .then(json => {
+                data = json;
+                renderList();
+                updateStats();
+            })
+            .catch(error => console.error('Error loading data:', error));
+        
+        function renderList(filter = '') {
+            const listContainer = document.getElementById('itemList');
+            listContainer.innerHTML = '';
+            
+            let filteredCount = 0;
+            
+            Object.entries(data).forEach(([imageId, item]) => {
+                const searchText = `${imageId} ${item.target_category} ${item.intentions.join(' ')}`.toLowerCase();
+                
+                if (filter && !searchText.includes(filter.toLowerCase())) {
+                    return;
+                }
+                
+                filteredCount++;
+                
+                const itemDiv = document.createElement('div');
+                itemDiv.className = `item ${selectedItems.has(imageId) ? 'selected' : ''}`;
+                itemDiv.innerHTML = `
+                    <div class="item-header">
+                        <input type="checkbox" class="checkbox" ${selectedItems.has(imageId) ? 'checked' : ''} 
+                               onchange="toggleItem('${imageId}')">
+                        <span class="item-id">${imageId}</span>
+                        <span class="category-badge">${item.target_category}</span>
+                    </div>
+                    <div class="item-content">
+                        <div class="image-filename">📁 ${item.image_file}</div>
+                    </div>
+                `;
+                
+                itemDiv.onclick = (e) => {
+                    if (e.target.type !== 'checkbox') {
+                        toggleItem(imageId);
+                    }
+                };
+                
+                listContainer.appendChild(itemDiv);
+            });
+            
+            document.getElementById('filteredCount').textContent = filteredCount;
+        }
+        
+        function toggleItem(imageId) {
+            if (selectedItems.has(imageId)) {
+                selectedItems.delete(imageId);
+            } else {
+                selectedItems.add(imageId);
+            }
+            renderList(document.getElementById('searchInput').value);
+            updateSelectedButton();
+        }
+        
+        function selectAll() {
+            selectedItems = new Set(Object.keys(data));
+            renderList(document.getElementById('searchInput').value);
+            updateSelectedButton();
+        }
+        
+        function deselectAll() {
+            selectedItems.clear();
+            renderList(document.getElementById('searchInput').value);
+            updateSelectedButton();
+            document.getElementById('detailView').classList.remove('active');
+        }
+        
+        function updateSelectedButton() {
+            const btn = document.querySelector('.filter-group .btn-primary:last-child');
+            btn.textContent = `Show Selected (${selectedItems.size})`;
+        }
+        
+        function showSelected() {
+            if (selectedItems.size === 0) {
+                alert('Please select at least one item');
+                return;
+            }
+            
+            const detailView = document.getElementById('detailView');
+            const detailContent = document.getElementById('detailContent');
+            detailContent.innerHTML = '';
+            
+            selectedItems.forEach(imageId => {
+                const item = data[imageId];
+                const detailDiv = document.createElement('div');
+                detailDiv.innerHTML = `
+                    <div class="detail-grid" style="margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid #e0e0e0;">
+                        <div class="detail-image">
+                            <img src="images/${item.image_file}" alt="${item.image_file}">
+                            <p style="margin-top: 10px; color: #666; font-size: 12px;">${item.image_file}</p>
+                        </div>
+                        <div class="detail-info">
+                            <h3>Image ID: ${imageId}</h3>
+                            
+                            <div class="info-item">
+                                <div class="info-label">Category:</div>
+                                <div class="info-value"><span class="category-badge">${item.target_category}</span></div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-label">Scene Reasoning:</div>
+                                <div class="info-value">${item.scene_reasoning}</div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-label">Intentions:</div>
+                                <ol class="intentions-list">
+                                    ${item.intentions.map(intent => `<li>${intent}</li>`).join('')}
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                detailContent.appendChild(detailDiv);
+            });
+            
+            detailView.classList.add('active');
+            detailView.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function updateStats() {
+            document.getElementById('totalCount').textContent = Object.keys(data).length;
+            document.getElementById('filteredCount').textContent = Object.keys(data).length;
+        }
+        
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            renderList(e.target.value);
+        });
+    </script>
+</body>
+</html>
+
